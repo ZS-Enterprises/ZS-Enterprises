@@ -1,0 +1,973 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>ZS Enterprises — Fabrication Excellence</title>
+<meta name="description" content="ZS Enterprises — Architectural & Interior Fabrication Solutions. MS, SS, Aluminium & Wood. Noida, India." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,500&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --font-head:'Cormorant Garamond', Georgia, 'Times New Roman', serif;
+    --font-body:'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  }
+  :root[data-theme="light"]{
+    --bg:#FBF7EF; --surface:#FFFFFF; --surface-2:#F1EADA;
+    --ink:#16213A; --ink-soft:#333F55; --ink-faint:#6B7488;
+    --accent:#1B3A6B; --accent-soft: rgba(27,58,107,0.10);
+    --gold:#B8860B; --gold-light:#C9A227; --gold-pale:#E7D9AE;
+    --line:#E1DAC8; --line-soft:#EEE8D9;
+    --band-bg:#16213A; --band-text:#FBF7EF; --band-text-soft:rgba(251,247,239,0.72);
+    --hero-grad: radial-gradient(ellipse 900px 600px at 15% 0%, rgba(184,134,11,0.07), transparent 60%), radial-gradient(ellipse 900px 700px at 100% 40%, rgba(27,58,107,0.06), transparent 60%);
+  }
+  :root[data-theme="dark"]{
+    --bg:#081527; --surface:#0F2038; --surface-2:#0B1B30;
+    --ink:#F4EFDD; --ink-soft:#D7DEE8; --ink-faint:#93A0B2;
+    --accent:#D9B84F; --accent-soft: rgba(217,184,79,0.12);
+    --gold:#D9B84F; --gold-light:#E9CF7A; --gold-pale:#8A7327;
+    --line:rgba(217,184,79,0.16); --line-soft:rgba(217,184,79,0.09);
+    --band-bg:#040D1B; --band-text:#F4EFDD; --band-text-soft:rgba(244,239,221,0.68);
+    --hero-grad: radial-gradient(ellipse 900px 600px at 15% 0%, rgba(217,184,79,0.10), transparent 60%), radial-gradient(ellipse 900px 700px at 100% 40%, rgba(217,184,79,0.06), transparent 60%);
+  }
+  *{ margin:0; padding:0; box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
+  html{ background:var(--bg); }
+  body{
+    background:var(--bg); color:var(--ink); font-family:var(--font-body); font-size:16px; line-height:1.7; overflow-x:hidden;
+    -webkit-font-smoothing:antialiased; transition:background-color .5s ease, color .5s ease;
+  }
+  ::selection{ background:var(--gold-pale); color:var(--ink); }
+  img{ max-width:100%; display:block; }
+  a{ color:inherit; text-decoration:none; }
+  section{ position:relative; width:100%; overflow:hidden; transition:background-color .5s ease, border-color .5s ease; }
+  .wrap{ max-width:1180px; margin:0 auto; padding:0 32px; position:relative; z-index:2; }
+  h1,h2,h3,h4{ font-family:var(--font-head); font-weight:600; }
+  .kicker{ font-size:13px; font-weight:700; letter-spacing:3px; color:var(--gold); text-transform:uppercase; margin-bottom:14px; }
+  .h2{ font-size:clamp(30px,4vw,46px); color:var(--ink); margin-bottom:18px; }
+  .lede{ color:var(--ink-soft); font-size:17.5px; max-width:640px; font-weight:400; }
+
+  #progress{ position:fixed; top:0; left:0; height:2px; background:linear-gradient(90deg,var(--gold),var(--accent)); width:0%; z-index:9999; transition:width .08s linear; }
+
+  .scroll-house{ position:fixed; left:24px; top:50%; transform:translateY(-50%); width:70px; z-index:40; pointer-events:none; display:flex; flex-direction:column; align-items:center; gap:12px; }
+  .scroll-house svg{ width:100%; height:auto; overflow:visible; }
+  .scroll-house .house-path{ fill:none; stroke:var(--gold); stroke-width:2; stroke-linecap:round; stroke-linejoin:round; stroke-dasharray:1; stroke-dashoffset:1; }
+  .scroll-house-label{ writing-mode:vertical-rl; text-orientation:mixed; font-size:9px; letter-spacing:2.5px; text-transform:uppercase; color:var(--ink-faint); opacity:0.75; }
+  @media (max-width:1220px){ .scroll-house{ display:none; } }
+
+  /* ---------- nav ---------- */
+  header{ position:fixed; top:0; left:0; width:100%; z-index:900; padding:20px 0; transition:all .35s ease; border-bottom:1px solid transparent; }
+  header.scrolled{ background:color-mix(in srgb, var(--bg) 88%, transparent); backdrop-filter:blur(14px); padding:13px 0; border-bottom:1px solid var(--line); }
+  .nav-inner{ max-width:1180px; margin:0 auto; padding:0 32px; display:flex; align-items:center; justify-content:space-between; gap:20px; }
+  .brand{ display:flex; align-items:center; gap:12px; }
+  .brand-mark{ width:38px; height:38px; flex-shrink:0; }
+  .brand-text{ font-family:var(--font-head); font-size:19px; font-weight:700; letter-spacing:1.6px; color:var(--ink); }
+  nav ul{ list-style:none; display:flex; gap:32px; }
+  nav a{ font-size:13px; letter-spacing:1.3px; text-transform:uppercase; color:var(--ink-soft); font-weight:600; position:relative; padding-bottom:4px; transition:color .25s; }
+  nav a::after{ content:""; position:absolute; left:0; bottom:0; width:0; height:1px; background:var(--gold); transition:width .3s ease; }
+  nav a:hover{ color:var(--ink); }
+  nav a:hover::after{ width:100%; }
+  .nav-right{ display:flex; align-items:center; gap:16px; }
+  .nav-cta{ border:1px solid var(--gold); padding:9px 20px; font-size:11px; letter-spacing:1.6px; text-transform:uppercase; color:var(--gold); transition:all .3s; white-space:nowrap; }
+  .nav-cta:hover{ background:var(--gold); color:var(--bg); }
+  .theme-toggle{ width:38px; height:38px; border-radius:50%; border:1px solid var(--line); background:var(--surface); display:flex; align-items:center; justify-content:center; cursor:pointer; transition:all .3s; }
+  .theme-toggle:hover{ border-color:var(--gold); }
+  .theme-toggle svg{ width:17px; height:17px; stroke:var(--ink); }
+  .burger{ display:none; flex-direction:column; gap:5px; cursor:pointer; z-index:950; }
+  .burger span{ width:24px; height:1.5px; background:var(--ink); transition:.3s; }
+
+  /* ---------- social rail ---------- */
+  .social-rail{ position:fixed; right:26px; top:50%; transform:translateY(-50%); z-index:850; display:flex; flex-direction:column; gap:14px; }
+  .social-rail a{ width:44px; height:44px; border-radius:50%; background:var(--surface); border:1px solid var(--line); display:flex; align-items:center; justify-content:center; box-shadow:0 6px 18px rgba(0,0,0,0.08); transition:all .3s; }
+  .social-rail a:hover{ background:var(--gold); border-color:var(--gold); }
+  .social-rail a:hover svg{ stroke:#fff; }
+  .social-rail svg{ width:19px; height:19px; stroke:var(--ink); transition:stroke .3s; }
+  @media (max-width:900px){ .social-rail{ display:none; } }
+
+  /* ---------- hero ---------- */
+  .hero{ min-height:96vh; display:flex; align-items:center; padding-top:120px; padding-bottom:60px; background:var(--hero-grad); position:relative; }
+  .hero-grid{ display:grid; grid-template-columns:1.1fr 0.9fr; gap:50px; align-items:center; position:relative; z-index:3; }
+
+  /* interactive magnetic dot-grid (cursor warp effect) */
+  .hero-grid-canvas{ position:absolute; inset:0; z-index:1; }
+
+  .draw-frame{ width:46px; height:46px; opacity:0.85; }
+  .draw-path{ fill:none; stroke:var(--gold); stroke-width:1.4; stroke-dasharray:140; stroke-dashoffset:140; transition:stroke-dashoffset 1.6s cubic-bezier(.2,.7,.2,1); }
+  .reveal.in .draw-path{ stroke-dashoffset:0; }
+
+  .ambient-glow{
+    position:absolute; inset:0; z-index:0; pointer-events:none;
+    background: radial-gradient(circle 460px at var(--gx,20%) var(--gy,15%), var(--accent-soft), transparent 72%);
+    animation: driftGlow 16s ease-in-out infinite;
+  }
+  .hero-glow{ z-index:2; animation-duration:14s; }
+  @keyframes driftGlow{
+    0%   { transform:translate(0,0); }
+    25%  { transform:translate(4%, 3%); }
+    50%  { transform:translate(-2%, 5%); }
+    75%  { transform:translate(-4%, -2%); }
+    100% { transform:translate(0,0); }
+  }
+
+  .hero-mark{ width:74px; height:74px; margin-bottom:26px; }
+  .hero h1{ font-size:clamp(46px,7vw,80px); line-height:1.02; color:var(--ink); margin-bottom:20px; }
+  .hero h1 em{ font-style:italic; color:var(--gold); }
+  .hero .tagline{ font-family:var(--font-head); font-style:italic; font-size:clamp(19px,2.2vw,24px); color:var(--ink-soft); margin-bottom:32px; max-width:520px; font-weight:500; }
+  .btn-row{ display:flex; gap:18px; flex-wrap:wrap; }
+  .btn{ padding:15px 34px; font-size:12.5px; letter-spacing:2px; text-transform:uppercase; font-weight:600; transition:all .35s ease; cursor:pointer; border:1px solid transparent; }
+  .btn-primary{ background:var(--gold); color:#fff; }
+  .btn-primary:hover{ background:var(--band-bg); color:#fff; }
+  .btn-ghost{ border:1px solid var(--ink); color:var(--ink); }
+  .btn-ghost:hover{ border-color:var(--gold); color:var(--gold); }
+  .hero-photo .frame{ position:relative; border:1px solid var(--line); padding:14px; background:var(--surface); box-shadow:0 30px 60px -20px rgba(0,0,0,0.18); }
+  .hero-photo img{ width:100%; height:420px; object-fit:cover; }
+  .hero-photo .cap{ position:absolute; bottom:-16px; left:34px; background:var(--gold); color:#fff; font-size:11px; letter-spacing:1.6px; text-transform:uppercase; padding:8px 16px; }
+
+  .stats{ background:var(--surface); border-top:1px solid var(--line); border-bottom:1px solid var(--line); padding:44px 0; }
+  .stats-grid{ display:grid; grid-template-columns:repeat(4,1fr); gap:20px; }
+  .stat{ text-align:center; border-right:1px solid var(--line); padding:0 10px; }
+  .stat:last-child{ border-right:none; }
+  .stat .num{ font-family:var(--font-head); font-size:clamp(30px,3.4vw,44px); color:var(--gold); font-weight:700; }
+  .stat .lbl{ font-size:11px; letter-spacing:1.8px; text-transform:uppercase; color:var(--ink-soft); margin-top:6px; }
+
+  .reveal{ opacity:0; transform:translateY(36px); transition:opacity .9s cubic-bezier(.2,.7,.2,1), transform .9s cubic-bezier(.2,.7,.2,1); }
+  .reveal.in{ opacity:1; transform:translateY(0); }
+  .reveal-delay-1.in{ transition-delay:.1s; } .reveal-delay-2.in{ transition-delay:.2s; } .reveal-delay-3.in{ transition-delay:.3s; }
+
+  .about{ padding:130px 0; }
+  .about-grid{ display:grid; grid-template-columns:0.9fr 1.1fr; gap:60px; align-items:center; }
+  .about-photo img{ width:100%; height:460px; object-fit:cover; border:1px solid var(--line); }
+  .about-copy p{ color:var(--ink-soft); font-weight:400; margin-bottom:18px; font-size:17px; }
+  .about-list{ list-style:none; margin-top:26px; }
+  .about-list li{ display:flex; gap:14px; padding:13px 0; border-top:1px solid var(--line); color:var(--ink-soft); font-size:16px; }
+  .about-list li:last-child{ border-bottom:1px solid var(--line); }
+  .about-list li .ico{ color:var(--gold); }
+
+  .services{ padding:120px 0; background:var(--surface-2); border-top:1px solid var(--line); }
+  .svc-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--line); margin-top:50px; border:1px solid var(--line); }
+  .svc-card{ background:var(--surface); transition:all .35s ease; border:1px solid transparent; }
+  .svc-card img{ width:100%; height:170px; object-fit:cover; transition:filter .35s ease, transform .5s ease; display:block; }
+  .svc-body{ padding:28px 26px; }
+  .svc-card:hover{ transform:translateY(-4px); box-shadow:0 22px 44px -18px rgba(0,0,0,0.28); position:relative; z-index:2; border-color:var(--gold); }
+  .svc-card:hover img{ filter:brightness(1.08) saturate(1.1); transform:scale(1.035); }
+  .svc-card .n{ font-family:var(--font-head); font-size:14px; color:var(--gold); font-weight:700; margin-bottom:12px; letter-spacing:2px; }
+  .svc-card h3{ font-size:21px; color:var(--ink); margin-bottom:10px; font-weight:700; }
+  .svc-card p{ font-size:15px; color:var(--ink-soft); font-weight:400; }
+
+  /* ---------- materials + donut ---------- */
+  .materials{ padding:120px 0; }
+  .mat-tabs{ display:flex; gap:2px; margin-top:48px; flex-wrap:wrap; }
+  .mat-tab{ flex:1; min-width:130px; padding:20px 18px; background:var(--surface); border:1px solid var(--line); border-bottom:2px solid transparent; cursor:pointer; text-align:center; transition:all .3s; }
+  .mat-tab.active, .mat-tab:hover{ border-color:var(--gold); background:var(--surface-2); }
+  .mat-tab .tag{ font-family:var(--font-head); font-size:22px; color:var(--gold); font-weight:700; }
+  .mat-tab .lbl{ font-size:11.5px; letter-spacing:1.4px; text-transform:uppercase; color:var(--ink-soft); margin-top:4px; font-weight:600; }
+  .mat-panel{ display:none; background:var(--surface); border:1px solid var(--line); border-top:none; }
+  .mat-panel.active{ display:grid; grid-template-columns:1fr 1fr; }
+  .mat-panel .txt{ padding:46px 44px; }
+  .mat-panel h3{ font-size:28px; color:var(--ink); margin-bottom:14px; }
+  .mat-panel p{ color:var(--ink-soft); font-weight:400; font-size:16px; margin-bottom:18px; }
+  .chip-row{ display:flex; gap:10px; flex-wrap:wrap; }
+  .chip{ font-size:12px; padding:7px 14px; border:1px solid var(--gold-pale); color:var(--gold); letter-spacing:.6px; }
+  .mat-panel img{ width:100%; height:100%; min-height:280px; object-fit:cover; }
+
+  .donut-wrap{ margin-top:70px; display:grid; grid-template-columns:220px 1fr; gap:50px; align-items:center; }
+  .donut-wrap svg{ width:220px; height:220px; transform:rotate(-90deg); }
+  .donut-seg{ stroke-dasharray:0 1000; transition:stroke-dasharray 1.4s cubic-bezier(.2,.7,.2,1); }
+  .donut-center{ text-align:center; }
+  .legend{ display:grid; grid-template-columns:repeat(2,1fr); gap:16px; }
+  .legend-item{ display:flex; align-items:center; gap:12px; }
+  .legend-dot{ width:12px; height:12px; border-radius:3px; flex-shrink:0; }
+  .legend-item h5{ font-size:15px; color:var(--ink); font-family:var(--font-head); font-weight:700; }
+  .legend-item span{ font-size:12.5px; color:var(--ink-soft); }
+
+  .process{ padding:120px 0; background:var(--surface-2); border-top:1px solid var(--line); }
+  .timeline{ display:flex; justify-content:space-between; margin-top:70px; position:relative; }
+  .timeline::before{ content:""; position:absolute; top:22px; left:0; right:0; height:1px; background:var(--line); }
+  .tl-progress{ position:absolute; top:22px; left:0; height:1px; background:var(--gold); width:0%; transition:width 1.8s cubic-bezier(.2,.7,.2,1); }
+  .tl-step{ position:relative; flex:1; text-align:center; padding:0 8px; }
+  .tl-dot{ width:44px; height:44px; border-radius:50%; border:1px solid var(--gold-pale); background:var(--surface); margin:0 auto 20px; display:flex; align-items:center; justify-content:center; font-family:var(--font-head); color:var(--gold); font-size:16px; position:relative; z-index:2; transition:all .4s; }
+  .tl-step.in .tl-dot{ border-color:var(--gold); box-shadow:0 0 0 5px var(--accent-soft); }
+  .tl-step h4{ font-size:16px; color:var(--ink); margin-bottom:6px; font-weight:700; }
+  .tl-step p{ font-size:13.5px; color:var(--ink-soft); font-weight:400; }
+
+  .portfolio{ padding:120px 0; background:var(--surface-2); border-top:1px solid var(--line); }
+  .pf-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:22px; margin-top:50px; }
+  .pf-card{ position:relative; aspect-ratio:4/5; overflow:hidden; border:1px solid var(--line); }
+  .pf-card img{ width:100%; height:100%; object-fit:cover; transition:transform .6s ease; }
+  .pf-card:hover img{ transform:scale(1.08); }
+  .pf-cap{ position:absolute; left:0; right:0; bottom:0; padding:18px 20px; background:linear-gradient(0deg, rgba(0,0,0,0.62), transparent); color:#fff; }
+  .pf-cap h4{ font-size:16px; font-weight:600; }
+  .pf-cap span{ font-size:12.5px; opacity:.95; font-style:italic; }
+
+  .ba-wrap{ margin-top:60px; }
+  .ba-slider{ position:relative; height:380px; overflow:hidden; border:1px solid var(--line); user-select:none; }
+  .ba-slider img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
+  .ba-after{ clip-path:inset(0 0 0 50%); }
+  .ba-tag{ position:absolute; top:16px; font-size:11px; letter-spacing:2.5px; color:#fff; background:rgba(0,0,0,0.55); padding:6px 14px; text-transform:uppercase; }
+  .ba-tag.left{ left:16px; } .ba-tag.right{ right:16px; }
+  .ba-handle{ position:absolute; top:0; bottom:0; left:50%; width:2px; background:#fff; cursor:ew-resize; }
+  .ba-handle::after{ content:"⇔"; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); width:38px; height:38px; background:var(--gold); color:#fff; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:15px; box-shadow:0 6px 18px rgba(0,0,0,0.25); }
+  .ba-hint{ text-align:center; font-size:12px; color:var(--ink-faint); margin-top:14px; font-style:italic; }
+
+  .testimonials{ padding:130px 0; background:var(--surface); border-top:1px solid var(--line); position:relative; }
+  .t-quote{ font-family:var(--font-head); font-size:clamp(22px,2.6vw,30px); font-style:italic; color:var(--ink); text-align:center; max-width:760px; margin:0 auto; min-height:150px; display:flex; align-items:center; justify-content:center; }
+  .t-mark{ font-size:60px; color:var(--gold-pale); text-align:center; font-family:var(--font-head); line-height:0; margin-bottom:10px; }
+  .t-author{ text-align:center; margin-top:28px; font-size:14px; letter-spacing:1.3px; color:var(--gold); text-transform:uppercase; font-weight:600; }
+  .t-dots{ display:flex; justify-content:center; gap:10px; margin-top:40px; }
+  .t-dot{ width:8px; height:8px; border-radius:50%; background:var(--line); cursor:pointer; transition:.3s; }
+  .t-dot.active{ background:var(--gold); width:22px; border-radius:4px; }
+  .placeholder-note{ font-size:13px; color:var(--ink-faint); font-style:italic; text-align:center; margin-top:16px; }
+
+  .cta-band{ padding:90px 0; background:var(--band-bg); text-align:center; }
+  .cta-band h2{ color:var(--band-text); font-size:clamp(26px,3.4vw,38px); margin-bottom:14px; }
+  .cta-band p{ color:var(--band-text-soft); margin-bottom:30px; font-weight:400; }
+  .cta-band .btn-primary{ background:var(--gold); }
+  .cta-band .btn-primary:hover{ background:var(--band-text); color:var(--band-bg); }
+
+  .contact{ padding:130px 0; }
+  .contact-head{ margin-bottom:50px; }
+  .contact-head h2{ font-family:var(--font-body); font-weight:900; font-size:clamp(34px,5.5vw,58px); letter-spacing:-1px; text-transform:uppercase; color:var(--ink); }
+  .contact-grid{ display:grid; grid-template-columns:2fr 1fr; gap:60px; align-items:start; }
+  .form-grid{
+    display:grid; gap:0; border:1px solid var(--line); background:var(--surface);
+    grid-template-columns:1fr 1fr;
+    grid-template-rows:auto auto auto 1fr;
+    grid-template-areas:
+      "name    phone"
+      "email   address"
+      "subject message"
+      "send    message";
+  }
+  .f-name{ grid-area:name; } .f-phone{ grid-area:phone; } .f-email{ grid-area:email; }
+  .f-address{ grid-area:address; } .f-subject{ grid-area:subject; } .f-message{ grid-area:message; }
+  .f-send{ grid-area:send; }
+  .f-field{ border:1px solid var(--line); margin:-1px -1px 0 0; display:flex; }
+  .f-field input, .f-field textarea{ width:100%; border:none; outline:none; background:transparent; padding:22px 20px; font-family:var(--font-body); font-size:15px; color:var(--ink); resize:none; }
+  .f-field textarea{ min-height:100%; }
+  ::placeholder{ color:var(--ink-faint); }
+  .send-btn{ width:100%; height:100%; min-height:64px; border:none; background:var(--gold); color:#fff; font-weight:700; letter-spacing:2.5px; font-size:16px; text-transform:uppercase; cursor:pointer; transition:background .3s; }
+  .send-btn:hover{ background:var(--band-bg); }
+  .form-status{ margin-top:16px; font-size:13.5px; color:var(--ink-soft); min-height:20px; }
+  .form-note{ font-size:12px; color:var(--ink-faint); font-style:italic; margin-top:12px; }
+
+  .side-info{ display:flex; flex-direction:column; gap:1px; border:1px solid var(--line); }
+  .info-row{ padding:22px 24px; background:var(--surface); border-bottom:1px solid var(--line); }
+  .info-row:last-child{ border-bottom:none; }
+  .info-row .k{ font-size:10.5px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); margin-bottom:6px; }
+  .info-row .v{ font-size:15px; color:var(--ink); }
+  .social-block{ display:flex; gap:12px; padding:22px 24px; background:var(--surface-2); }
+  .social-block a{ width:40px; height:40px; border-radius:50%; background:var(--surface); border:1px solid var(--line); display:flex; align-items:center; justify-content:center; transition:all .3s; }
+  .social-block a:hover{ background:var(--gold); border-color:var(--gold); }
+  .social-block a:hover svg{ stroke:#fff; }
+  .social-block svg{ width:17px; height:17px; stroke:var(--ink); transition:stroke .3s; }
+
+  footer{ padding:40px 0; background:var(--band-bg); }
+  .foot-inner{ display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:14px; }
+  .foot-inner p{ font-size:12.5px; color:var(--band-text-soft); }
+  .foot-tag{ font-family:var(--font-head); font-style:italic; color:var(--gold-light); font-size:13.5px; }
+
+  @media (max-width:900px){
+    nav ul, .nav-cta{ display:none; }
+    .burger{ display:flex; }
+    .hero-grid, .about-grid, .mat-panel.active, .contact-grid, .donut-wrap{ grid-template-columns:1fr; }
+    .stats-grid{ grid-template-columns:repeat(2,1fr); gap:26px; }
+    .stat{ border-right:none; border-bottom:1px solid var(--line); padding-bottom:20px; }
+    .svc-grid{ grid-template-columns:1fr; }
+    .pf-grid{ grid-template-columns:1fr 1fr; }
+    .timeline{ flex-wrap:wrap; gap:30px; }
+    .timeline::before, .tl-progress{ display:none; }
+    .tl-step{ flex:0 0 45%; }
+    .form-grid{
+      grid-template-columns:1fr; grid-template-rows:none;
+      grid-template-areas:"name" "phone" "email" "address" "subject" "message" "send";
+    }
+    .f-field textarea{ min-height:180px; }
+    .house-svg-wrap{ width:88vw; }
+  }
+  @media (max-width:560px){ .pf-grid{ grid-template-columns:1fr; } }
+
+  .mobile-menu{ position:fixed; inset:0; background:var(--bg); z-index:890; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:28px; transform:translateY(-100%); transition:transform .45s cubic-bezier(.2,.8,.2,1); }
+  .mobile-menu.open{ transform:translateY(0); }
+  .mobile-menu a{ font-family:var(--font-head); font-size:26px; color:var(--ink); font-style:italic; }
+  .mobile-menu .theme-toggle{ margin-top:10px; }
+</style>
+</head>
+<body>
+
+<div id="progress"></div>
+
+<div class="scroll-house" id="scrollHouse" aria-hidden="true">
+  <svg viewBox="0 0 120 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path class="house-path" id="hp-roof" pathLength="1" d="M10 70 L60 20 L110 70"/>
+    <path class="house-path" id="hp-chim" pathLength="1" d="M80 45 V25 H95 V57"/>
+    <path class="house-path" id="hp-walls" pathLength="1" d="M20 70 V140 H100 V70"/>
+    <path class="house-path" id="hp-win1" pathLength="1" d="M30 85 H44 V105 H30 Z"/>
+    <path class="house-path" id="hp-win2" pathLength="1" d="M78 85 H92 V105 H78 Z"/>
+    <path class="house-path" id="hp-door" pathLength="1" d="M50 140 V100 H72 V140"/>
+    <path class="house-path" id="hp-ground" pathLength="1" d="M5 140 H115"/>
+  </svg>
+  <div class="scroll-house-label"></div>
+</div>
+
+<header id="siteHeader">
+  <div class="nav-inner">
+    <a href="#home" class="brand">
+      <svg class="brand-mark" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="10" y="10" width="80" height="80" transform="rotate(45 50 50)" stroke="var(--gold)" stroke-width="1.4"/>
+        <path d="M32 34H62L32 62H62" stroke="var(--gold)" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M40 30C34 30 30 34 32 39C34 44 46 46 48 51C50 56 46 60 40 60" stroke="var(--accent)" stroke-width="2.2" stroke-linecap="round" fill="none" opacity="0.85" transform="translate(14,4)"/>
+      </svg>
+      <span class="brand-text">ZS ENTERPRISES</span>
+    </a>
+    <nav>
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#materials">Materials</a></li>
+        <li><a href="#process">Process</a></li>
+        <li><a href="#portfolio">Portfolio</a></li>
+        <li><a href="#testimonials">Clients</a></li>
+      </ul>
+    </nav>
+    <div class="nav-right">
+      <div class="theme-toggle" id="themeToggle" title="Toggle theme">
+        <svg id="themeIcon" viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></svg>
+      </div>
+      <a href="#contact" class="nav-cta">Get in Touch</a>
+      <div class="burger" id="burger"><span></span><span></span><span></span></div>
+    </div>
+  </div>
+</header>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#about">About</a>
+  <a href="#services">Services</a>
+  <a href="#materials">Materials</a>
+  <a href="#process">Process</a>
+  <a href="#portfolio">Portfolio</a>
+  <a href="#testimonials">Clients</a>
+  <a href="#contact">Contact</a>
+</div>
+
+<div class="social-rail">
+  <a href="https://instagram.com/[your_handle]" target="_blank" rel="noopener" aria-label="Instagram" title="Instagram">
+    <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1"/></svg>
+  </a>
+  <a href="https://wa.me/91XXXXXXXXXX" target="_blank" rel="noopener" aria-label="WhatsApp" title="WhatsApp">
+    <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.5 8.5 0 0 1-12.4 7.5L3 20l1.1-5.4A8.5 8.5 0 1 1 21 11.5Z"/><path d="M8.5 10.5c.3 2.4 2.6 4.7 5 5"/></svg>
+  </a>
+  <a href="https://maps.google.com/?q=D-306,+Sector+10,+Noida,+Uttar+Pradesh" target="_blank" rel="noopener" aria-label="Google Maps" title="Google Maps">
+    <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s7-7.2 7-12a7 7 0 1 0-14 0c0 4.8 7 12 7 12Z"/><circle cx="12" cy="9" r="2.4"/></svg>
+  </a>
+</div>
+
+<section class="hero" id="home">
+  <canvas class="hero-grid-canvas" id="heroGridCanvas"></canvas>
+  <div class="ambient-glow hero-glow" style="--gx:20%; --gy:15%;"></div>
+  </div>
+
+
+  <div class="wrap hero-grid">
+    <div>
+      <svg class="hero-mark reveal" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="10" y="10" width="80" height="80" transform="rotate(45 50 50)" stroke="var(--gold)" stroke-width="1.2"/>
+        <path d="M32 34H62L32 62H62" stroke="var(--gold)" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M40 30C34 30 30 34 32 39C34 44 46 46 48 51C50 56 46 60 40 60" stroke="var(--accent)" stroke-width="2.2" stroke-linecap="round" fill="none" opacity="0.85" transform="translate(14,4)"/>
+      </svg>
+      <div class="kicker reveal">Architectural &amp; Interior Fabrication</div>
+      <h1 class="reveal">ZS <em>Enterprises</em></h1>
+      <p class="tagline reveal reveal-delay-1">"Crafting Fabrication with Royal Precision" — trusted by builders, architects, interior designers &amp; studios for MS, SS, aluminium &amp; wood fabrication.</p>
+      <div class="btn-row reveal reveal-delay-2">
+        <a href="#portfolio" class="btn btn-primary">View Portfolio</a>
+        <a href="#contact" class="btn btn-ghost">Start a Project</a>
+      </div>
+    </div>
+    <div class="hero-photo reveal reveal-delay-2">
+      <div class="frame">
+        <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAwIiBoZWlnaHQ9IjQ0MCIgdmlld0JveD0iMCAwIDYwMCA0NDAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImdoZXJvLWdhdGUiIHgxPSIwIiB5MT0iMCIgeDI9IjEiIHkyPSIxIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjRjJFN0M5Ii8+CiAgICAgIDxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iI0U3RDBBMCIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICAgIDxwYXR0ZXJuIGlkPSJncmlkaGVyby1nYXRlIiB3aWR0aD0iMjgiIGhlaWdodD0iMjgiIHBhdHRlcm5Vbml0cz0idXNlclNwYWNlT25Vc2UiPgogICAgICA8cGF0aCBkPSJNMjggMEgwVjI4IiBmaWxsPSJub25lIiBzdHJva2U9IiNCODg2MEIiIHN0cm9rZS1vcGFjaXR5PSIwLjA5IiBzdHJva2Utd2lkdGg9IjEiLz4KICAgIDwvcGF0dGVybj4KICA8L2RlZnM+CiAgPHJlY3Qgd2lkdGg9IjYwMCIgaGVpZ2h0PSI0NDAiIGZpbGw9InVybCgjZ2hlcm8tZ2F0ZSkiLz4KICA8cmVjdCB3aWR0aD0iNjAwIiBoZWlnaHQ9IjQ0MCIgZmlsbD0idXJsKCNncmlkaGVyby1nYXRlKSIvPgogIDxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDMwMCwyMjApIj4KPGcgc3Ryb2tlPSIjMkIyQTI2IiBzdHJva2Utd2lkdGg9IjQiIGZpbGw9Im5vbmUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCI+CiAgPHJlY3QgeD0iLTE0MCIgeT0iLTEyMCIgd2lkdGg9IjI4MCIgaGVpZ2h0PSIyMjAiIHJ4PSI0Ii8+CiAgPGxpbmUgeDE9Ii0xNDAiIHkxPSItNDAiIHgyPSIxNDAiIHkyPSItNDAiLz4KICA8bGluZSB4MT0iMCIgeTE9Ii0xMjAiIHgyPSIwIiB5Mj0iMTAwIi8+CiAgPHBhdGggZD0iTS0xMDAgLTEyMFYtNDBNLTYwIC0xMjBWLTQwTTYwIC0xMjBWLTQwTTEwMCAtMTIwVi00MCIgc3Ryb2tlLXdpZHRoPSIyLjQiLz4KICA8cGF0aCBkPSJNLTEwMCAtNDBWMTAwTS02MCAtNDBWMTAwTTYwIC00MFYxMDBNMTAwIC00MFYxMDAiIHN0cm9rZS13aWR0aD0iMi40Ii8+CiAgPGNpcmNsZSBjeD0iMCIgY3k9Ii00MCIgcj0iMTAiIGZpbGw9IiNCODg2MEIiIHN0cm9rZT0ibm9uZSIvPgo8L2c+CjxsaW5lIHgxPSItMTkwIiB5MT0iMTAwIiB4Mj0iMTkwIiB5Mj0iMTAwIiBzdHJva2U9IiMyQjJBMjYiIHN0cm9rZS13aWR0aD0iNCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+PC9nPgo8L3N2Zz4=" alt="Sample fabrication project — modern steel gate" />
+        <div class="cap">Illustrative</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="stats">
+  <div class="wrap stats-grid">
+    <div class="stat"><div class="num" data-count="4">0</div><div class="lbl">Core Materials</div></div>
+    <div class="stat"><div class="num" data-count="6">0</div><div class="lbl">Fabrication Services</div></div>
+    <div class="stat"><div class="num" data-count="5">0</div><div class="lbl">Client Sectors</div></div>
+    <div class="stat"><div class="num" data-count="1">0</div><div class="lbl">Point of Coordination</div></div>
+  </div>
+</section>
+
+<section class="about" id="about">
+  <div class="ambient-glow" style="--gx:88%; --gy:12%;"></div>
+  </div>
+
+  <div class="wrap about-grid">
+    <div class="about-photo reveal">
+      <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAwIiBoZWlnaHQ9IjQ0MCIgdmlld0JveD0iMCAwIDYwMCA0NDAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImdhYm91dC13b3Jrc2hvcCIgeDE9IjAiIHkxPSIwIiB4Mj0iMSIgeTI9IjEiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAiIHN0b3AtY29sb3I9IiNFRkU2RDIiLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjRENDOUEwIi8+CiAgICA8L2xpbmVhckdyYWRpZW50PgogICAgPHBhdHRlcm4gaWQ9ImdyaWRhYm91dC13b3Jrc2hvcCIgd2lkdGg9IjI4IiBoZWlnaHQ9IjI4IiBwYXR0ZXJuVW5pdHM9InVzZXJTcGFjZU9uVXNlIj4KICAgICAgPHBhdGggZD0iTTI4IDBIMFYyOCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjQjg4NjBCIiBzdHJva2Utb3BhY2l0eT0iMC4wOSIgc3Ryb2tlLXdpZHRoPSIxIi8+CiAgICA8L3BhdHRlcm4+CiAgPC9kZWZzPgogIDxyZWN0IHdpZHRoPSI2MDAiIGhlaWdodD0iNDQwIiBmaWxsPSJ1cmwoI2dhYm91dC13b3Jrc2hvcCkiLz4KICA8cmVjdCB3aWR0aD0iNjAwIiBoZWlnaHQ9IjQ0MCIgZmlsbD0idXJsKCNncmlkYWJvdXQtd29ya3Nob3ApIi8+CiAgPGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMzAwLDIyMCkiPgo8ZyBzdHJva2U9IiMyQjJBMjYiIHN0cm9rZS13aWR0aD0iNCIgZmlsbD0ibm9uZSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIj4KICA8cmVjdCB4PSItMTUwIiB5PSIyMCIgd2lkdGg9IjMwMCIgaGVpZ2h0PSIxNiIvPgogIDxsaW5lIHgxPSItMTMwIiB5MT0iMzYiIHgyPSItMTMwIiB5Mj0iMTEwIi8+CiAgPGxpbmUgeDE9IjEzMCIgeTE9IjM2IiB4Mj0iMTMwIiB5Mj0iMTEwIi8+CiAgPGxpbmUgeDE9Ii05MCIgeTE9Ii02MCIgeDI9IjkwIiB5Mj0iLTYwIi8+CiAgPHBhdGggZD0iTS05MCAtNjAgTC02MCAtMTAwIEwtMzAgLTYwIi8+CiAgPGNpcmNsZSBjeD0iNjAiIGN5PSItMjAiIHI9IjI2Ii8+CiAgPGxpbmUgeDE9IjYwIiB5MT0iLTQ2IiB4Mj0iNjAiIHkyPSI2Ii8+CiAgPGxpbmUgeDE9IjM0IiB5MT0iLTIwIiB4Mj0iODYiIHkyPSItMjAiLz4KPC9nPgo8ZyBmaWxsPSIjQjg4NjBCIiBzdHJva2U9Im5vbmUiPgogIDxjaXJjbGUgY3g9Ii03MCIgY3k9Ii03MCIgcj0iMyIvPgogIDxjaXJjbGUgY3g9Ii01NSIgY3k9Ii05MCIgcj0iMi40Ii8+CiAgPGNpcmNsZSBjeD0iLTg1IiBjeT0iLTkwIiByPSIyIi8+CjwvZz48L2c+Cjwvc3ZnPg==" alt="Illustration — fabrication workshop" />
+    </div>
+    <div class="about-copy reveal reveal-delay-1">
+<svg class="draw-frame reveal" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" style="margin-bottom:14px;">
+  <path class="draw-path" d="M10 30 L10 10 L30 10"/>
+  <path class="draw-path" d="M70 10 L90 10 L90 30"/>
+  <path class="draw-path" d="M90 70 L90 90 L70 90"/>
+  <path class="draw-path" d="M30 90 L10 90 L10 70"/>
+  <path class="draw-path" d="M50 42 A8 8 0 1 1 49.99 42"/>
+</svg>
+      <div class="kicker">About Us</div>
+      <h2 class="h2">Precision in every detail.<br>Craft in every corner.</h2>
+      <p>ZS Enterprises delivers fabrication and interior solutions for residential, commercial and architectural projects — working across MS, stainless steel, aluminium and wood.</p>
+      <p>We pair practical engineering with a design-conscious eye, coordinating measurements, materials and finishing across every material so the project moves forward without friction — built for builders, architects, interior designers and studios who need one dependable fabrication partner.</p>
+      <ul class="about-list">
+        <li><span class="ico">◆</span> Custom fabrication engineered to site &amp; design requirements</li>
+        <li><span class="ico">◆</span> Close attention to measurements, alignment &amp; finishing</li>
+        <li><span class="ico">◆</span> Trusted by architects, designers, contractors &amp; homeowners</li>
+        <li><span class="ico">◆</span> One-point coordination across MS, SS, aluminium &amp; wood</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="services" id="services">
+  <div class="ambient-glow" style="--gx:6%; --gy:85%;"></div>
+  <div class="wrap">
+    <div class="kicker reveal">What We Do</div>
+    <h2 class="h2 reveal">Services Offered</h2>
+    <p class="lede reveal">From single structural elements to fully coordinated multi-material fit-outs.</p>
+    <div class="svc-grid">
+      <div class="svc-card reveal">
+        <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAwIiBoZWlnaHQ9IjQ0MCIgdmlld0JveD0iMCAwIDYwMCA0NDAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImdzdmMtZ2F0ZSIgeDE9IjAiIHkxPSIwIiB4Mj0iMSIgeTI9IjEiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAiIHN0b3AtY29sb3I9IiNGMkU3QzkiLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjRTdEMEEwIi8+CiAgICA8L2xpbmVhckdyYWRpZW50PgogICAgPHBhdHRlcm4gaWQ9ImdyaWRzdmMtZ2F0ZSIgd2lkdGg9IjI4IiBoZWlnaHQ9IjI4IiBwYXR0ZXJuVW5pdHM9InVzZXJTcGFjZU9uVXNlIj4KICAgICAgPHBhdGggZD0iTTI4IDBIMFYyOCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjQjg4NjBCIiBzdHJva2Utb3BhY2l0eT0iMC4wOSIgc3Ryb2tlLXdpZHRoPSIxIi8+CiAgICA8L3BhdHRlcm4+CiAgPC9kZWZzPgogIDxyZWN0IHdpZHRoPSI2MDAiIGhlaWdodD0iNDQwIiBmaWxsPSJ1cmwoI2dzdmMtZ2F0ZSkiLz4KICA8cmVjdCB3aWR0aD0iNjAwIiBoZWlnaHQ9IjQ0MCIgZmlsbD0idXJsKCNncmlkc3ZjLWdhdGUpIi8+CiAgPGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMzAwLDIyMCkiPgo8ZyBzdHJva2U9IiMyQjJBMjYiIHN0cm9rZS13aWR0aD0iNCIgZmlsbD0ibm9uZSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIj4KICA8cmVjdCB4PSItMTQwIiB5PSItMTIwIiB3aWR0aD0iMjgwIiBoZWlnaHQ9IjIyMCIgcng9IjQiLz4KICA8bGluZSB4MT0iLTE0MCIgeTE9Ii00MCIgeDI9IjE0MCIgeTI9Ii00MCIvPgogIDxsaW5lIHgxPSIwIiB5MT0iLTEyMCIgeDI9IjAiIHkyPSIxMDAiLz4KICA8cGF0aCBkPSJNLTEwMCAtMTIwVi00ME0tNjAgLTEyMFYtNDBNNjAgLTEyMFYtNDBNMTAwIC0xMjBWLTQwIiBzdHJva2Utd2lkdGg9IjIuNCIvPgogIDxwYXRoIGQ9Ik0tMTAwIC00MFYxMDBNLTYwIC00MFYxMDBNNjAgLTQwVjEwME0xMDAgLTQwVjEwMCIgc3Ryb2tlLXdpZHRoPSIyLjQiLz4KICA8Y2lyY2xlIGN4PSIwIiBjeT0iLTQwIiByPSIxMCIgZmlsbD0iI0I4ODYwQiIgc3Ryb2tlPSJub25lIi8+CjwvZz4KPGxpbmUgeDE9Ii0xOTAiIHkxPSIxMDAiIHgyPSIxOTAiIHkyPSIxMDAiIHN0cm9rZT0iIzJCMkEyNiIgc3Ryb2tlLXdpZHRoPSI0IiBzdHJva2UtbGluZWNhcD0icm91bmQiLz48L2c+Cjwvc3ZnPg==" alt="Illustration — architectural gate fabrication" />
+        <div class="svc-body"><div class="n">01</div><h3>Architectural Structures</h3><p>MS &amp; SS gates, railings, pergolas and manhole frames — fabricated to project dimensions, finished clean.</p></div>
+      </div>
+      <div class="svc-card reveal reveal-delay-1">
+        <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAwIiBoZWlnaHQ9IjQ0MCIgdmlld0JveD0iMCAwIDYwMCA0NDAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImdzdmMtaW50ZXJpb3IiIHgxPSIwIiB5MT0iMCIgeDI9IjEiIHkyPSIxIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjRUZFNkQyIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iI0Q5Q0JCMCIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICAgIDxwYXR0ZXJuIGlkPSJncmlkc3ZjLWludGVyaW9yIiB3aWR0aD0iMjgiIGhlaWdodD0iMjgiIHBhdHRlcm5Vbml0cz0idXNlclNwYWNlT25Vc2UiPgogICAgICA8cGF0aCBkPSJNMjggMEgwVjI4IiBmaWxsPSJub25lIiBzdHJva2U9IiNCODg2MEIiIHN0cm9rZS1vcGFjaXR5PSIwLjA5IiBzdHJva2Utd2lkdGg9IjEiLz4KICAgIDwvcGF0dGVybj4KICA8L2RlZnM+CiAgPHJlY3Qgd2lkdGg9IjYwMCIgaGVpZ2h0PSI0NDAiIGZpbGw9InVybCgjZ3N2Yy1pbnRlcmlvcikiLz4KICA8cmVjdCB3aWR0aD0iNjAwIiBoZWlnaHQ9IjQ0MCIgZmlsbD0idXJsKCNncmlkc3ZjLWludGVyaW9yKSIvPgogIDxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDMwMCwyMjApIj4KPGcgc3Ryb2tlPSIjMkIyQTI2IiBzdHJva2Utd2lkdGg9IjQiIGZpbGw9Im5vbmUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCI+CiAgPHJlY3QgeD0iLTE0MCIgeT0iLTExMCIgd2lkdGg9IjI4MCIgaGVpZ2h0PSIyMjAiLz4KICA8bGluZSB4MT0iLTE0MCIgeTE9Ii0yMCIgeDI9IjE0MCIgeTI9Ii0yMCIvPgogIDxsaW5lIHgxPSItNDYiIHkxPSItMTEwIiB4Mj0iLTQ2IiB5Mj0iMTEwIi8+CiAgPGxpbmUgeDE9IjQ2IiB5MT0iLTExMCIgeDI9IjQ2IiB5Mj0iMTEwIi8+CjwvZz48L2c+Cjwvc3ZnPg==" alt="Illustration — interior studio fit-out" />
+        <div class="svc-body"><div class="n">02</div><h3>Interior Studio Solutions</h3><p>Aluminium partitions, profile windows and wooden modular kitchens built to studio specification.</p></div>
+      </div>
+      <div class="svc-card reveal reveal-delay-2">
+        <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAwIiBoZWlnaHQ9IjQ0MCIgdmlld0JveD0iMCAwIDYwMCA0NDAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImdzdmMtYnVpbGRlciIgeDE9IjAiIHkxPSIwIiB4Mj0iMSIgeTI9IjEiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAiIHN0b3AtY29sb3I9IiNFOUUxRDAiLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjQ0JCOThFIi8+CiAgICA8L2xpbmVhckdyYWRpZW50PgogICAgPHBhdHRlcm4gaWQ9ImdyaWRzdmMtYnVpbGRlciIgd2lkdGg9IjI4IiBoZWlnaHQ9IjI4IiBwYXR0ZXJuVW5pdHM9InVzZXJTcGFjZU9uVXNlIj4KICAgICAgPHBhdGggZD0iTTI4IDBIMFYyOCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjQjg4NjBCIiBzdHJva2Utb3BhY2l0eT0iMC4wOSIgc3Ryb2tlLXdpZHRoPSIxIi8+CiAgICA8L3BhdHRlcm4+CiAgPC9kZWZzPgogIDxyZWN0IHdpZHRoPSI2MDAiIGhlaWdodD0iNDQwIiBmaWxsPSJ1cmwoI2dzdmMtYnVpbGRlcikiLz4KICA8cmVjdCB3aWR0aD0iNjAwIiBoZWlnaHQ9IjQ0MCIgZmlsbD0idXJsKCNncmlkc3ZjLWJ1aWxkZXIpIi8+CiAgPGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMzAwLDIyMCkiPgo8ZyBzdHJva2U9IiMyQjJBMjYiIHN0cm9rZS13aWR0aD0iNCIgZmlsbD0ibm9uZSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIj4KICA8bGluZSB4MT0iLTE1MCIgeTE9IjExMCIgeDI9IjE1MCIgeTI9IjExMCIvPgogIDxsaW5lIHgxPSItOTAiIHkxPSIxMTAiIHgyPSItOTAiIHkyPSItODAiLz4KICA8bGluZSB4MT0iLTkwIiB5MT0iLTgwIiB4Mj0iMTEwIiB5Mj0iLTgwIi8+CiAgPGxpbmUgeDE9IjYwIiB5MT0iLTgwIiB4Mj0iNjAiIHkyPSItMjAiLz4KICA8bGluZSB4MT0iLTkwIiB5MT0iLTQwIiB4Mj0iLTIwIiB5Mj0iLTQwIi8+CiAgPHBhdGggZD0iTTEwMCAtODAgTDEyMCAtNjAgTDEwMCAtNDAiIC8+CjwvZz4KPGcgZmlsbD0iI0I4ODYwQiIgc3Ryb2tlPSJub25lIj48Y2lyY2xlIGN4PSI2MCIgY3k9Ii0xNCIgcj0iNiIvPjwvZz48L2c+Cjwvc3ZnPg==" alt="Illustration — large-scale build collaboration" />
+        <div class="svc-body"><div class="n">03</div><h3>Builder Collaboration</h3><p>One-point coordination across MS, SS, aluminium &amp; wood for villas, offices, retail &amp; hospitality builds.</p></div>
+      </div>
+      <div class="svc-card reveal">
+        <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAwIiBoZWlnaHQ9IjQ0MCIgdmlld0JveD0iMCAwIDYwMCA0NDAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImdzdmMtZGVjb3IiIHgxPSIwIiB5MT0iMCIgeDI9IjEiIHkyPSIxIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjRjBFNkNFIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iI0RFQzk4RiIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICAgIDxwYXR0ZXJuIGlkPSJncmlkc3ZjLWRlY29yIiB3aWR0aD0iMjgiIGhlaWdodD0iMjgiIHBhdHRlcm5Vbml0cz0idXNlclNwYWNlT25Vc2UiPgogICAgICA8cGF0aCBkPSJNMjggMEgwVjI4IiBmaWxsPSJub25lIiBzdHJva2U9IiNCODg2MEIiIHN0cm9rZS1vcGFjaXR5PSIwLjA5IiBzdHJva2Utd2lkdGg9IjEiLz4KICAgIDwvcGF0dGVybj4KICA8L2RlZnM+CiAgPHJlY3Qgd2lkdGg9IjYwMCIgaGVpZ2h0PSI0NDAiIGZpbGw9InVybCgjZ3N2Yy1kZWNvcikiLz4KICA8cmVjdCB3aWR0aD0iNjAwIiBoZWlnaHQ9IjQ0MCIgZmlsbD0idXJsKCNncmlkc3ZjLWRlY29yKSIvPgogIDxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDMwMCwyMjApIj4KPGcgc3Ryb2tlPSIjMkIyQTI2IiBzdHJva2Utd2lkdGg9IjMuNSIgZmlsbD0ibm9uZSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIj4KICA8Y2lyY2xlIGN4PSIwIiBjeT0iMCIgcj0iMTEwIi8+CiAgPGNpcmNsZSBjeD0iMCIgY3k9IjAiIHI9IjcwIi8+CiAgPGNpcmNsZSBjeD0iMCIgY3k9IjAiIHI9IjMwIi8+CiAgPGxpbmUgeDE9IjAiIHkxPSItMTEwIiB4Mj0iMCIgeTI9IjExMCIvPgogIDxsaW5lIHgxPSItMTEwIiB5MT0iMCIgeDI9IjExMCIgeTI9IjAiLz4KICA8bGluZSB4MT0iLTc4IiB5MT0iLTc4IiB4Mj0iNzgiIHkyPSI3OCIvPgogIDxsaW5lIHgxPSI3OCIgeTE9Ii03OCIgeDI9Ii03OCIgeTI9Ijc4Ii8+CjwvZz4KPGNpcmNsZSBjeD0iMCIgY3k9IjAiIHI9IjYiIGZpbGw9IiNCODg2MEIiIHN0cm9rZT0ibm9uZSIvPjwvZz4KPC9zdmc+" alt="Illustration — stainless steel décor" />
+        <div class="svc-body"><div class="n">04</div><h3>SS Home Décor</h3><p>Made-to-requirement stainless-steel décor and architectural accessories for modern interiors.</p></div>
+      </div>
+      <div class="svc-card reveal reveal-delay-1">
+        <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAwIiBoZWlnaHQ9IjQ0MCIgdmlld0JveD0iMCAwIDYwMCA0NDAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImdzdmMtY3VzdG9tIiB4MT0iMCIgeTE9IjAiIHgyPSIxIiB5Mj0iMSI+CiAgICAgIDxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iI0VGRTdENSIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiNEOEM3OUMiLz4KICAgIDwvbGluZWFyR3JhZGllbnQ+CiAgICA8cGF0dGVybiBpZD0iZ3JpZHN2Yy1jdXN0b20iIHdpZHRoPSIyOCIgaGVpZ2h0PSIyOCIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+CiAgICAgIDxwYXRoIGQ9Ik0yOCAwSDBWMjgiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI0I4ODYwQiIgc3Ryb2tlLW9wYWNpdHk9IjAuMDkiIHN0cm9rZS13aWR0aD0iMSIvPgogICAgPC9wYXR0ZXJuPgogIDwvZGVmcz4KICA8cmVjdCB3aWR0aD0iNjAwIiBoZWlnaHQ9IjQ0MCIgZmlsbD0idXJsKCNnc3ZjLWN1c3RvbSkiLz4KICA8cmVjdCB3aWR0aD0iNjAwIiBoZWlnaHQ9IjQ0MCIgZmlsbD0idXJsKCNncmlkc3ZjLWN1c3RvbSkiLz4KICA8ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSgzMDAsMjIwKSI+CjxnIHN0cm9rZT0iIzJCMkEyNiIgc3Ryb2tlLXdpZHRoPSI0IiBmaWxsPSJub25lIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiPgogIDxyZWN0IHg9Ii0xMzAiIHk9Ii0xMDAiIHdpZHRoPSIyNjAiIGhlaWdodD0iMTgwIiByeD0iMiIvPgogIDxsaW5lIHgxPSItMTAwIiB5MT0iLTYwIiB4Mj0iNjAiIHkyPSItNjAiLz4KICA8bGluZSB4MT0iLTEwMCIgeTE9Ii0yMCIgeDI9IjkwIiB5Mj0iLTIwIi8+CiAgPGxpbmUgeDE9Ii0xMDAiIHkxPSIyMCIgeDI9IjMwIiB5Mj0iMjAiLz4KICA8Y2lyY2xlIGN4PSI3MCIgY3k9IjIwIiByPSIxNCIvPgo8L2c+CjxnIHN0cm9rZT0iI0I4ODYwQiIgc3Ryb2tlLXdpZHRoPSI0IiBmaWxsPSJub25lIiBzdHJva2UtbGluZWNhcD0icm91bmQiPgogIDxsaW5lIHgxPSI2MCIgeTE9IjkwIiB4Mj0iMTMwIiB5Mj0iMjAiLz4KICA8cGF0aCBkPSJNMTE4IDMyIEwxMzAgMjAgTDEyNCA0MCBaIiBmaWxsPSIjQjg4NjBCIi8+CjwvZz48L2c+Cjwvc3ZnPg==" alt="Illustration — custom fabrication drawing" />
+        <div class="svc-body"><div class="n">05</div><h3>Custom Fabrication</h3><p>Have a drawing or site measurement? We discuss materials, finishing &amp; installation from scratch.</p></div>
+      </div>
+      <div class="svc-card reveal reveal-delay-2">
+        <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAwIiBoZWlnaHQ9IjQ0MCIgdmlld0JveD0iMCAwIDYwMCA0NDAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImdzdmMtaW5zdGFsbCIgeDE9IjAiIHkxPSIwIiB4Mj0iMSIgeTI9IjEiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAiIHN0b3AtY29sb3I9IiNFOUUwQ0IiLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjQ0RCOThBIi8+CiAgICA8L2xpbmVhckdyYWRpZW50PgogICAgPHBhdHRlcm4gaWQ9ImdyaWRzdmMtaW5zdGFsbCIgd2lkdGg9IjI4IiBoZWlnaHQ9IjI4IiBwYXR0ZXJuVW5pdHM9InVzZXJTcGFjZU9uVXNlIj4KICAgICAgPHBhdGggZD0iTTI4IDBIMFYyOCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjQjg4NjBCIiBzdHJva2Utb3BhY2l0eT0iMC4wOSIgc3Ryb2tlLXdpZHRoPSIxIi8+CiAgICA8L3BhdHRlcm4+CiAgPC9kZWZzPgogIDxyZWN0IHdpZHRoPSI2MDAiIGhlaWdodD0iNDQwIiBmaWxsPSJ1cmwoI2dzdmMtaW5zdGFsbCkiLz4KICA8cmVjdCB3aWR0aD0iNjAwIiBoZWlnaHQ9IjQ0MCIgZmlsbD0idXJsKCNncmlkc3ZjLWluc3RhbGwpIi8+CiAgPGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMzAwLDIyMCkiPgo8ZyBzdHJva2U9IiMyQjJBMjYiIHN0cm9rZS13aWR0aD0iNCIgZmlsbD0ibm9uZSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIj4KICA8bGluZSB4MT0iLTQwIiB5MT0iMTIwIiB4Mj0iMTAiIHkyPSItMTEwIi8+CiAgPGxpbmUgeDE9IjQwIiB5MT0iMTIwIiB4Mj0iOTAiIHkyPSItMTEwIi8+CiAgPGxpbmUgeDE9Ii0yNCIgeTE9IjgwIiB4Mj0iNzYiIHkyPSI4MCIvPgogIDxsaW5lIHgxPSItMTQiIHkxPSI0MCIgeDI9Ijg2IiB5Mj0iNDAiLz4KICA8bGluZSB4MT0iLTQiIHkxPSIwIiB4Mj0iOTYiIHkyPSIwIi8+CiAgPGxpbmUgeDE9IjYiIHkxPSItNDAiIHgyPSIxMDYiIHkyPSItNDAiLz4KICA8cmVjdCB4PSItMTUwIiB5PSItNzAiIHdpZHRoPSI5MCIgaGVpZ2h0PSIxNTAiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDAsMTApIi8+CjwvZz48L2c+Cjwvc3ZnPg==" alt="Illustration — on-site installation" />
+        <div class="svc-body"><div class="n">06</div><h3>On-Site Installation</h3><p>End-to-end project support from fabrication through to final on-site installation and handover.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="materials" id="materials">
+  <div class="ambient-glow" style="--gx:92%; --gy:80%;"></div>
+  </div>
+
+  <div class="wrap">
+    <div class="kicker reveal">What We Build With</div>
+    <h2 class="h2 reveal">Materials We Work With</h2>
+    <p class="lede reveal">Four materials, one coordinated fabrication partner.</p>
+
+    <div class="mat-tabs reveal">
+      <div class="mat-tab active" data-tab="ms" tabindex="0" role="button" aria-label="Mild Steel"><div class="tag">MS</div><div class="lbl">Mild Steel</div></div>
+      <div class="mat-tab" data-tab="ss" tabindex="0" role="button" aria-label="Stainless Steel"><div class="tag">SS</div><div class="lbl">Stainless Steel</div></div>
+      <div class="mat-tab" data-tab="al" tabindex="0" role="button" aria-label="Aluminium"><div class="tag">AL</div><div class="lbl">Aluminium</div></div>
+      <div class="mat-tab" data-tab="wd" tabindex="0" role="button" aria-label="Wood"><div class="tag">WD</div><div class="lbl">Wood</div></div>
+    </div>
+
+    <div class="mat-panel active" data-panel="ms">
+      <div class="txt"><h3>MS Fabrication</h3><p>Custom gates in modern and classic patterns, balcony &amp; staircase railings with clean detailing, and outdoor pergola structures built for shade, character and durability.</p><div class="chip-row"><span class="chip">Gates</span><span class="chip">Railings</span><span class="chip">Pergolas</span></div></div>
+      <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAwIiBoZWlnaHQ9IjQ0MCIgdmlld0JveD0iMCAwIDYwMCA0NDAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImdtYXQtbXMiIHgxPSIwIiB5MT0iMCIgeDI9IjEiIHkyPSIxIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjRTRFNEUwIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iI0I5QkRDMiIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICAgIDxwYXR0ZXJuIGlkPSJncmlkbWF0LW1zIiB3aWR0aD0iMjgiIGhlaWdodD0iMjgiIHBhdHRlcm5Vbml0cz0idXNlclNwYWNlT25Vc2UiPgogICAgICA8cGF0aCBkPSJNMjggMEgwVjI4IiBmaWxsPSJub25lIiBzdHJva2U9IiNCODg2MEIiIHN0cm9rZS1vcGFjaXR5PSIwLjA5IiBzdHJva2Utd2lkdGg9IjEiLz4KICAgIDwvcGF0dGVybj4KICA8L2RlZnM+CiAgPHJlY3Qgd2lkdGg9IjYwMCIgaGVpZ2h0PSI0NDAiIGZpbGw9InVybCgjZ21hdC1tcykiLz4KICA8cmVjdCB3aWR0aD0iNjAwIiBoZWlnaHQ9IjQ0MCIgZmlsbD0idXJsKCNncmlkbWF0LW1zKSIvPgogIDxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDMwMCwyMjApIj4KPGcgc3Ryb2tlPSIjMkIyQTI2IiBzdHJva2Utd2lkdGg9IjQiIGZpbGw9Im5vbmUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCI+CiAgPGxpbmUgeDE9Ii0xNDAiIHkxPSItOTAiIHgyPSIxNDAiIHkyPSItOTAiLz4KICA8bGluZSB4MT0iLTE0MCIgeTE9IjkwIiB4Mj0iMTQwIiB5Mj0iOTAiLz4KICA8bGluZSB4MT0iLTE0MCIgeTE9Ii05MCIgeDI9Ii0xNDAiIHkyPSI5MCIvPjxsaW5lIHgxPSItMTA1IiB5MT0iLTkwIiB4Mj0iLTEwNSIgeTI9IjkwIi8+PGxpbmUgeDE9Ii03MCIgeTE9Ii05MCIgeDI9Ii03MCIgeTI9IjkwIi8+PGxpbmUgeDE9Ii0zNSIgeTE9Ii05MCIgeDI9Ii0zNSIgeTI9IjkwIi8+PGxpbmUgeDE9IjAiIHkxPSItOTAiIHgyPSIwIiB5Mj0iOTAiLz48bGluZSB4MT0iMzUiIHkxPSItOTAiIHgyPSIzNSIgeTI9IjkwIi8+PGxpbmUgeDE9IjcwIiB5MT0iLTkwIiB4Mj0iNzAiIHkyPSI5MCIvPjxsaW5lIHgxPSIxMDUiIHkxPSItOTAiIHgyPSIxMDUiIHkyPSI5MCIvPjxsaW5lIHgxPSIxNDAiIHkxPSItOTAiIHgyPSIxNDAiIHkyPSI5MCIvPgo8L2c+PC9nPgo8L3N2Zz4=" alt="Illustration — MS fabrication" />
+    </div>
+    <div class="mat-panel" data-panel="ss">
+      <div class="txt"><h3>SS Work</h3><p>Stainless-steel gates with a clean contemporary appearance, staircase &amp; terrace railing solutions, and fabricated manhole frames for durable architectural applications.</p><div class="chip-row"><span class="chip">Gates</span><span class="chip">Railings</span><span class="chip">Manhole Frames</span></div></div>
+      <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAwIiBoZWlnaHQ9IjQ0MCIgdmlld0JveD0iMCAwIDYwMCA0NDAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImdtYXQtc3MiIHgxPSIwIiB5MT0iMCIgeDI9IjEiIHkyPSIxIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjRTlFRUYwIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iI0MzQ0REMSIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICAgIDxwYXR0ZXJuIGlkPSJncmlkbWF0LXNzIiB3aWR0aD0iMjgiIGhlaWdodD0iMjgiIHBhdHRlcm5Vbml0cz0idXNlclNwYWNlT25Vc2UiPgogICAgICA8cGF0aCBkPSJNMjggMEgwVjI4IiBmaWxsPSJub25lIiBzdHJva2U9IiNCODg2MEIiIHN0cm9rZS1vcGFjaXR5PSIwLjA5IiBzdHJva2Utd2lkdGg9IjEiLz4KICAgIDwvcGF0dGVybj4KICA8L2RlZnM+CiAgPHJlY3Qgd2lkdGg9IjYwMCIgaGVpZ2h0PSI0NDAiIGZpbGw9InVybCgjZ21hdC1zcykiLz4KICA8cmVjdCB3aWR0aD0iNjAwIiBoZWlnaHQ9IjQ0MCIgZmlsbD0idXJsKCNncmlkbWF0LXNzKSIvPgogIDxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDMwMCwyMjApIj4KPGcgc3Ryb2tlPSIjMkIyQTI2IiBzdHJva2Utd2lkdGg9IjMuNCIgZmlsbD0ibm9uZSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIj4KICA8cGF0aCBkPSJNLTEyMCAtOTAgTC05MCAtNjcuNSBMLTEyMCAtNDUgTC0xNTAgLTY3LjUgWiIvPjxwYXRoIGQ9Ik0tNjAgLTkwIEwtMzAgLTY3LjUgTC02MCAtNDUgTC05MCAtNjcuNSBaIi8+PHBhdGggZD0iTTAgLTkwIEwzMCAtNjcuNSBMMCAtNDUgTC0zMCAtNjcuNSBaIi8+PHBhdGggZD0iTTYwIC05MCBMOTAgLTY3LjUgTDYwIC00NSBMMzAgLTY3LjUgWiIvPjxwYXRoIGQ9Ik0xMjAgLTkwIEwxNTAgLTY3LjUgTDEyMCAtNDUgTDkwIC02Ny41IFoiLz48cGF0aCBkPSJNLTEyMCAtNDUgTC05MCAtMjIuNSBMLTEyMCAwIEwtMTUwIC0yMi41IFoiLz48cGF0aCBkPSJNLTYwIC00NSBMLTMwIC0yMi41IEwtNjAgMCBMLTkwIC0yMi41IFoiLz48cGF0aCBkPSJNMCAtNDUgTDMwIC0yMi41IEwwIDAgTC0zMCAtMjIuNSBaIi8+PHBhdGggZD0iTTYwIC00NSBMOTAgLTIyLjUgTDYwIDAgTDMwIC0yMi41IFoiLz48cGF0aCBkPSJNMTIwIC00NSBMMTUwIC0yMi41IEwxMjAgMCBMOTAgLTIyLjUgWiIvPjxwYXRoIGQ9Ik0tMTIwIDAgTC05MCAyMi41IEwtMTIwIDQ1IEwtMTUwIDIyLjUgWiIvPjxwYXRoIGQ9Ik0tNjAgMCBMLTMwIDIyLjUgTC02MCA0NSBMLTkwIDIyLjUgWiIvPjxwYXRoIGQ9Ik0wIDAgTDMwIDIyLjUgTDAgNDUgTC0zMCAyMi41IFoiLz48cGF0aCBkPSJNNjAgMCBMOTAgMjIuNSBMNjAgNDUgTDMwIDIyLjUgWiIvPjxwYXRoIGQ9Ik0xMjAgMCBMMTUwIDIyLjUgTDEyMCA0NSBMOTAgMjIuNSBaIi8+PHBhdGggZD0iTS0xMjAgNDUgTC05MCA2Ny41IEwtMTIwIDkwIEwtMTUwIDY3LjUgWiIvPjxwYXRoIGQ9Ik0tNjAgNDUgTC0zMCA2Ny41IEwtNjAgOTAgTC05MCA2Ny41IFoiLz48cGF0aCBkPSJNMCA0NSBMMzAgNjcuNSBMMCA5MCBMLTMwIDY3LjUgWiIvPjxwYXRoIGQ9Ik02MCA0NSBMOTAgNjcuNSBMNjAgOTAgTDMwIDY3LjUgWiIvPjxwYXRoIGQ9Ik0xMjAgNDUgTDE1MCA2Ny41IEwxMjAgOTAgTDkwIDY3LjUgWiIvPjxwYXRoIGQ9Ik0tMTIwIDkwIEwtOTAgMTEyLjUgTC0xMjAgMTM1IEwtMTUwIDExMi41IFoiLz48cGF0aCBkPSJNLTYwIDkwIEwtMzAgMTEyLjUgTC02MCAxMzUgTC05MCAxMTIuNSBaIi8+PHBhdGggZD0iTTAgOTAgTDMwIDExMi41IEwwIDEzNSBMLTMwIDExMi41IFoiLz48cGF0aCBkPSJNNjAgOTAgTDkwIDExMi41IEw2MCAxMzUgTDMwIDExMi41IFoiLz48cGF0aCBkPSJNMTIwIDkwIEwxNTAgMTEyLjUgTDEyMCAxMzUgTDkwIDExMi41IFoiLz4KPC9nPjwvZz4KPC9zdmc+" alt="Illustration — SS fabrication" />
+    </div>
+    <div class="mat-panel" data-panel="al">
+      <div class="txt"><h3>Aluminium Solutions</h3><p>Slim, practical profile windows fabricated to exact opening sizes, lightweight contemporary gates, and office or residential partitions for clean spatial separation.</p><div class="chip-row"><span class="chip">Windows</span><span class="chip">Gates</span><span class="chip">Partitions</span></div></div>
+      <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAwIiBoZWlnaHQ9IjQ0MCIgdmlld0JveD0iMCAwIDYwMCA0NDAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImdtYXQtYWwiIHgxPSIwIiB5MT0iMCIgeDI9IjEiIHkyPSIxIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjRUNFRUVBIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iI0M5Q0VDMiIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICAgIDxwYXR0ZXJuIGlkPSJncmlkbWF0LWFsIiB3aWR0aD0iMjgiIGhlaWdodD0iMjgiIHBhdHRlcm5Vbml0cz0idXNlclNwYWNlT25Vc2UiPgogICAgICA8cGF0aCBkPSJNMjggMEgwVjI4IiBmaWxsPSJub25lIiBzdHJva2U9IiNCODg2MEIiIHN0cm9rZS1vcGFjaXR5PSIwLjA5IiBzdHJva2Utd2lkdGg9IjEiLz4KICAgIDwvcGF0dGVybj4KICA8L2RlZnM+CiAgPHJlY3Qgd2lkdGg9IjYwMCIgaGVpZ2h0PSI0NDAiIGZpbGw9InVybCgjZ21hdC1hbCkiLz4KICA8cmVjdCB3aWR0aD0iNjAwIiBoZWlnaHQ9IjQ0MCIgZmlsbD0idXJsKCNncmlkbWF0LWFsKSIvPgogIDxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDMwMCwyMjApIj4KPGcgc3Ryb2tlPSIjMkIyQTI2IiBzdHJva2Utd2lkdGg9IjQiIGZpbGw9Im5vbmUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCI+CiAgPHJlY3QgeD0iLTEyMCIgeT0iLTEwMCIgd2lkdGg9IjI0MCIgaGVpZ2h0PSIyMDAiLz4KICA8bGluZSB4MT0iMCIgeTE9Ii0xMDAiIHgyPSIwIiB5Mj0iMTAwIi8+CiAgPGxpbmUgeDE9Ii0xMjAiIHkxPSIwIiB4Mj0iMTIwIiB5Mj0iMCIvPgogIDxyZWN0IHg9Ii0xMjAiIHk9Ii0xMDAiIHdpZHRoPSIyNDAiIGhlaWdodD0iMjAwIiB0cmFuc2Zvcm09InNjYWxlKDAuNjIpIiBvcGFjaXR5PSIwLjUiLz4KPC9nPjwvZz4KPC9zdmc+" alt="Illustration — aluminium fabrication" />
+    </div>
+    <div class="mat-panel" data-panel="wd">
+      <div class="txt"><h3>Wooden Modular Kitchens</h3><p>Custom modular kitchen layouts focused on storage, usability and modern appearance — built to project measurements.</p><div class="chip-row"><span class="chip">Modular Kitchens</span><span class="chip">Storage Systems</span></div></div>
+      <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAwIiBoZWlnaHQ9IjQ0MCIgdmlld0JveD0iMCAwIDYwMCA0NDAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImdtYXQtd2QiIHgxPSIwIiB5MT0iMCIgeDI9IjEiIHkyPSIxIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjRURFMUNCIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iI0M5QTg3NiIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICAgIDxwYXR0ZXJuIGlkPSJncmlkbWF0LXdkIiB3aWR0aD0iMjgiIGhlaWdodD0iMjgiIHBhdHRlcm5Vbml0cz0idXNlclNwYWNlT25Vc2UiPgogICAgICA8cGF0aCBkPSJNMjggMEgwVjI4IiBmaWxsPSJub25lIiBzdHJva2U9IiNCODg2MEIiIHN0cm9rZS1vcGFjaXR5PSIwLjA5IiBzdHJva2Utd2lkdGg9IjEiLz4KICAgIDwvcGF0dGVybj4KICA8L2RlZnM+CiAgPHJlY3Qgd2lkdGg9IjYwMCIgaGVpZ2h0PSI0NDAiIGZpbGw9InVybCgjZ21hdC13ZCkiLz4KICA8cmVjdCB3aWR0aD0iNjAwIiBoZWlnaHQ9IjQ0MCIgZmlsbD0idXJsKCNncmlkbWF0LXdkKSIvPgogIDxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDMwMCwyMjApIj4KPGcgc3Ryb2tlPSIjMkIyQTI2IiBzdHJva2Utd2lkdGg9IjQiIGZpbGw9Im5vbmUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCI+CiAgPHJlY3QgeD0iLTE1MCIgeT0iLTQwIiB3aWR0aD0iMzAwIiBoZWlnaHQ9IjkwIi8+CiAgPGxpbmUgeDE9IjAiIHkxPSItNDAiIHgyPSIwIiB5Mj0iNTAiLz4KICA8bGluZSB4MT0iLTc1IiB5MT0iMTAiIHgyPSItMjUiIHkyPSIxMCIvPgogIDxsaW5lIHgxPSIyNSIgeTE9IjEwIiB4Mj0iNzUiIHkyPSIxMCIvPgogIDxyZWN0IHg9Ii0xNTAiIHk9Ii0xMDAiIHdpZHRoPSIzMDAiIGhlaWdodD0iNDUiLz4KICA8bGluZSB4MT0iLTUwIiB5MT0iLTEwMCIgeDI9Ii01MCIgeTI9Ii01NSIvPgogIDxsaW5lIHgxPSI1MCIgeTE9Ii0xMDAiIHgyPSI1MCIgeTI9Ii01NSIvPgo8L2c+PC9nPgo8L3N2Zz4=" alt="Illustration — wooden modular kitchen" />
+    </div>
+
+    <div class="donut-wrap reveal" id="donutWrap">
+      <svg viewBox="0 0 120 120">
+        <circle cx="60" cy="60" r="50" fill="none" stroke="var(--line)" stroke-width="14"/>
+        <circle class="donut-seg" data-pct="25" cx="60" cy="60" r="50" fill="none" stroke="#5A6472" stroke-width="14" stroke-dashoffset="0"/>
+        <circle class="donut-seg" data-pct="25" data-offset="25" cx="60" cy="60" r="50" fill="none" stroke="#8FA6B8" stroke-width="14" stroke-dashoffset="-78.5"/>
+        <circle class="donut-seg" data-pct="25" data-offset="50" cx="60" cy="60" r="50" fill="none" stroke="#C9A227" stroke-width="14" stroke-dashoffset="-157"/>
+        <circle class="donut-seg" data-pct="25" data-offset="75" cx="60" cy="60" r="50" fill="none" stroke="#8A6A45" stroke-width="14" stroke-dashoffset="-235.5"/>
+      </svg>
+      <div class="legend">
+        <div class="legend-item"><div class="legend-dot" style="background:#5A6472;"></div><div><h5>MS</h5><span>Gates, railings, pergolas</span></div></div>
+        <div class="legend-item"><div class="legend-dot" style="background:#8FA6B8;"></div><div><h5>SS</h5><span>Gates, railings, manhole frames</span></div></div>
+        <div class="legend-item"><div class="legend-dot" style="background:#C9A227;"></div><div><h5>Aluminium</h5><span>Windows, gates, partitions</span></div></div>
+        <div class="legend-item"><div class="legend-dot" style="background:#8A6A45;"></div><div><h5>Wood</h5><span>Modular kitchens</span></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="process" id="process">
+  <div class="ambient-glow" style="--gx:15%; --gy:18%;"></div>
+  <div class="wrap">
+    <div class="kicker reveal">Project Timeline</div>
+    <h2 class="h2 reveal">From First Sketch to Handover</h2>
+    <div class="timeline" id="timeline">
+      <div class="tl-progress" id="tlProgress"></div>
+      <div class="tl-step"><div class="tl-dot">01</div><h4>Consultation</h4><p>Understanding site &amp; design intent</p></div>
+      <div class="tl-step"><div class="tl-dot">02</div><h4>Design Review</h4><p>Drawings &amp; measurements confirmed</p></div>
+      <div class="tl-step"><div class="tl-dot">03</div><h4>Fabrication</h4><p>Precision cutting &amp; assembly</p></div>
+      <div class="tl-step"><div class="tl-dot">04</div><h4>Quality Check</h4><p>Alignment &amp; finish inspected</p></div>
+      <div class="tl-step"><div class="tl-dot">05</div><h4>Installation</h4><p>On-site fit &amp; handover</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="portfolio" id="portfolio">
+  <div class="ambient-glow" style="--gx:85%; --gy:10%;"></div>
+  <div class="wrap">
+    <svg class="draw-frame reveal" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" style="margin-bottom:14px;">
+  <path class="draw-path" d="M10 30 L10 10 L30 10"/>
+  <path class="draw-path" d="M70 10 L90 10 L90 30"/>
+  <path class="draw-path" d="M90 70 L90 90 L70 90"/>
+  <path class="draw-path" d="M30 90 L10 90 L10 70"/>
+  <path class="draw-path" d="M50 42 A8 8 0 1 1 49.99 42"/>
+</svg>
+<div class="kicker reveal">Our Work</div>
+    <h2 class="h2 reveal">Portfolio Showcase</h2>
+    <p class="lede reveal">Illustrative graphics below, standing in until your real project photography is ready.</p>
+    <div class="pf-grid">
+      <div class="pf-card reveal"><img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAwIiBoZWlnaHQ9IjQ0MCIgdmlld0JveD0iMCAwIDYwMCA0NDAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImdwZjEiIHgxPSIwIiB5MT0iMCIgeDI9IjEiIHkyPSIxIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjRjJFN0M5Ii8+CiAgICAgIDxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iI0U3RDBBMCIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICAgIDxwYXR0ZXJuIGlkPSJncmlkcGYxIiB3aWR0aD0iMjgiIGhlaWdodD0iMjgiIHBhdHRlcm5Vbml0cz0idXNlclNwYWNlT25Vc2UiPgogICAgICA8cGF0aCBkPSJNMjggMEgwVjI4IiBmaWxsPSJub25lIiBzdHJva2U9IiNCODg2MEIiIHN0cm9rZS1vcGFjaXR5PSIwLjA5IiBzdHJva2Utd2lkdGg9IjEiLz4KICAgIDwvcGF0dGVybj4KICA8L2RlZnM+CiAgPHJlY3Qgd2lkdGg9IjYwMCIgaGVpZ2h0PSI0NDAiIGZpbGw9InVybCgjZ3BmMSkiLz4KICA8cmVjdCB3aWR0aD0iNjAwIiBoZWlnaHQ9IjQ0MCIgZmlsbD0idXJsKCNncmlkcGYxKSIvPgogIDxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDMwMCwyMjApIj4KPGcgc3Ryb2tlPSIjMkIyQTI2IiBzdHJva2Utd2lkdGg9IjQiIGZpbGw9Im5vbmUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCI+CiAgPHJlY3QgeD0iLTE0MCIgeT0iLTEyMCIgd2lkdGg9IjI4MCIgaGVpZ2h0PSIyMjAiIHJ4PSI0Ii8+CiAgPGxpbmUgeDE9Ii0xNDAiIHkxPSItNDAiIHgyPSIxNDAiIHkyPSItNDAiLz4KICA8bGluZSB4MT0iMCIgeTE9Ii0xMjAiIHgyPSIwIiB5Mj0iMTAwIi8+CiAgPHBhdGggZD0iTS0xMDAgLTEyMFYtNDBNLTYwIC0xMjBWLTQwTTYwIC0xMjBWLTQwTTEwMCAtMTIwVi00MCIgc3Ryb2tlLXdpZHRoPSIyLjQiLz4KICA8cGF0aCBkPSJNLTEwMCAtNDBWMTAwTS02MCAtNDBWMTAwTTYwIC00MFYxMDBNMTAwIC00MFYxMDAiIHN0cm9rZS13aWR0aD0iMi40Ii8+CiAgPGNpcmNsZSBjeD0iMCIgY3k9Ii00MCIgcj0iMTAiIGZpbGw9IiNCODg2MEIiIHN0cm9rZT0ibm9uZSIvPgo8L2c+CjxsaW5lIHgxPSItMTkwIiB5MT0iMTAwIiB4Mj0iMTkwIiB5Mj0iMTAwIiBzdHJva2U9IiMyQjJBMjYiIHN0cm9rZS13aWR0aD0iNCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+PC9nPgo8L3N2Zz4=" alt="Illustration — project type"/><div class="pf-cap"><h4>MS &amp; SS Gates</h4><span>Illustrative</span></div></div>
+      <div class="pf-card reveal reveal-delay-1"><img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAwIiBoZWlnaHQ9IjQ0MCIgdmlld0JveD0iMCAwIDYwMCA0NDAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImdwZjIiIHgxPSIwIiB5MT0iMCIgeDI9IjEiIHkyPSIxIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjRUZFNkQyIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iI0Q5Qzc5QSIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICAgIDxwYXR0ZXJuIGlkPSJncmlkcGYyIiB3aWR0aD0iMjgiIGhlaWdodD0iMjgiIHBhdHRlcm5Vbml0cz0idXNlclNwYWNlT25Vc2UiPgogICAgICA8cGF0aCBkPSJNMjggMEgwVjI4IiBmaWxsPSJub25lIiBzdHJva2U9IiNCODg2MEIiIHN0cm9rZS1vcGFjaXR5PSIwLjA5IiBzdHJva2Utd2lkdGg9IjEiLz4KICAgIDwvcGF0dGVybj4KICA8L2RlZnM+CiAgPHJlY3Qgd2lkdGg9IjYwMCIgaGVpZ2h0PSI0NDAiIGZpbGw9InVybCgjZ3BmMikiLz4KICA8cmVjdCB3aWR0aD0iNjAwIiBoZWlnaHQ9IjQ0MCIgZmlsbD0idXJsKCNncmlkcGYyKSIvPgogIDxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDMwMCwyMjApIj4KPGcgc3Ryb2tlPSIjMkIyQTI2IiBzdHJva2Utd2lkdGg9IjQiIGZpbGw9Im5vbmUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCI+CiAgPGxpbmUgeDE9Ii0xMzAiIHkxPSItOTAiIHgyPSItMTMwIiB5Mj0iMTAwIi8+CiAgPGxpbmUgeDE9IjEzMCIgeTE9Ii05MCIgeDI9IjEzMCIgeTI9IjEwMCIvPgogIDxsaW5lIHgxPSItMTUwIiB5MT0iLTkwIiB4Mj0iMTUwIiB5Mj0iLTkwIi8+CiAgPGxpbmUgeDE9Ii0xMzAiIHkxPSItOTAiIHgyPSItMTMwIiB5Mj0iLTcwIi8+PGxpbmUgeDE9Ii03OCIgeTE9Ii05MCIgeDI9Ii03OCIgeTI9Ii03MCIvPjxsaW5lIHgxPSItMjYiIHkxPSItOTAiIHgyPSItMjYiIHkyPSItNzAiLz48bGluZSB4MT0iMjYiIHkxPSItOTAiIHgyPSIyNiIgeTI9Ii03MCIvPjxsaW5lIHgxPSI3OCIgeTE9Ii05MCIgeDI9Ijc4IiB5Mj0iLTcwIi8+PGxpbmUgeDE9IjEzMCIgeTE9Ii05MCIgeDI9IjEzMCIgeTI9Ii03MCIvPgogIDxsaW5lIHgxPSItMTMwIiB5MT0iMzAiIHgyPSIxMzAiIHkyPSIzMCIvPgogIDxsaW5lIHgxPSItMTMwIiB5MT0iMzAiIHgyPSItMTMwIiB5Mj0iMTAwIi8+PGxpbmUgeDE9Ii05Ny41IiB5MT0iMzAiIHgyPSItOTcuNSIgeTI9IjEwMCIvPjxsaW5lIHgxPSItNjUiIHkxPSIzMCIgeDI9Ii02NSIgeTI9IjEwMCIvPjxsaW5lIHgxPSItMzIuNSIgeTE9IjMwIiB4Mj0iLTMyLjUiIHkyPSIxMDAiLz48bGluZSB4MT0iMCIgeTE9IjMwIiB4Mj0iMCIgeTI9IjEwMCIvPjxsaW5lIHgxPSIzMi41IiB5MT0iMzAiIHgyPSIzMi41IiB5Mj0iMTAwIi8+PGxpbmUgeDE9IjY1IiB5MT0iMzAiIHgyPSI2NSIgeTI9IjEwMCIvPjxsaW5lIHgxPSI5Ny41IiB5MT0iMzAiIHgyPSI5Ny41IiB5Mj0iMTAwIi8+PGxpbmUgeDE9IjEzMCIgeTE9IjMwIiB4Mj0iMTMwIiB5Mj0iMTAwIi8+CjwvZz48L2c+Cjwvc3ZnPg==" alt="Illustration — project type"/><div class="pf-cap"><h4>Railings &amp; Pergolas</h4><span>Illustrative</span></div></div>
+      <div class="pf-card reveal reveal-delay-2"><img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAwIiBoZWlnaHQ9IjQ0MCIgdmlld0JveD0iMCAwIDYwMCA0NDAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImdwZjMiIHgxPSIwIiB5MT0iMCIgeDI9IjEiIHkyPSIxIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjRURFMUNCIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iI0M5QTg3NiIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICAgIDxwYXR0ZXJuIGlkPSJncmlkcGYzIiB3aWR0aD0iMjgiIGhlaWdodD0iMjgiIHBhdHRlcm5Vbml0cz0idXNlclNwYWNlT25Vc2UiPgogICAgICA8cGF0aCBkPSJNMjggMEgwVjI4IiBmaWxsPSJub25lIiBzdHJva2U9IiNCODg2MEIiIHN0cm9rZS1vcGFjaXR5PSIwLjA5IiBzdHJva2Utd2lkdGg9IjEiLz4KICAgIDwvcGF0dGVybj4KICA8L2RlZnM+CiAgPHJlY3Qgd2lkdGg9IjYwMCIgaGVpZ2h0PSI0NDAiIGZpbGw9InVybCgjZ3BmMykiLz4KICA8cmVjdCB3aWR0aD0iNjAwIiBoZWlnaHQ9IjQ0MCIgZmlsbD0idXJsKCNncmlkcGYzKSIvPgogIDxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDMwMCwyMjApIj4KPGcgc3Ryb2tlPSIjMkIyQTI2IiBzdHJva2Utd2lkdGg9IjQiIGZpbGw9Im5vbmUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCI+CiAgPGxpbmUgeDE9Ii0xNTAiIHkxPSItMTAiIHgyPSIxNTAiIHkyPSItMTAiLz4KICA8cmVjdCB4PSItMTUwIiB5PSItMTAiIHdpZHRoPSIzMDAiIGhlaWdodD0iOTAiLz4KICA8bGluZSB4MT0iLTkwIiB5MT0iMzAiIHgyPSItNDAiIHkyPSIzMCIvPgogIDxsaW5lIHgxPSIyMCIgeTE9IjMwIiB4Mj0iNzAiIHkyPSIzMCIvPgogIDxsaW5lIHgxPSIxMzAiIHkxPSIzMCIgeDI9IjE1MCIgeTI9IjMwIi8+CiAgPHBhdGggZD0iTS02MCAtMTAgdi0yMCBhMTAgMTAgMCAwIDEgMjAgMCB2MjAiIC8+CjwvZz48L2c+Cjwvc3ZnPg==" alt="Illustration — project type"/><div class="pf-cap"><h4>Modular Kitchens</h4><span>Illustrative</span></div></div>
+    </div>
+
+    <div class="ba-wrap reveal">
+      <div class="kicker" style="margin-top:10px;">Before / After</div>
+      <div class="ba-slider" id="baSlider">
+        <img class="ba-before" src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAwIiBoZWlnaHQ9IjQ0MCIgdmlld0JveD0iMCAwIDYwMCA0NDAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImdiZWZvcmUiIHgxPSIwIiB5MT0iMCIgeDI9IjEiIHkyPSIxIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjRUFFM0QzIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iI0Q3Q0JBRSIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICAgIDxwYXR0ZXJuIGlkPSJncmlkYmVmb3JlIiB3aWR0aD0iMjgiIGhlaWdodD0iMjgiIHBhdHRlcm5Vbml0cz0idXNlclNwYWNlT25Vc2UiPgogICAgICA8cGF0aCBkPSJNMjggMEgwVjI4IiBmaWxsPSJub25lIiBzdHJva2U9IiNCODg2MEIiIHN0cm9rZS1vcGFjaXR5PSIwLjA5IiBzdHJva2Utd2lkdGg9IjEiLz4KICAgIDwvcGF0dGVybj4KICA8L2RlZnM+CiAgPHJlY3Qgd2lkdGg9IjYwMCIgaGVpZ2h0PSI0NDAiIGZpbGw9InVybCgjZ2JlZm9yZSkiLz4KICA8cmVjdCB3aWR0aD0iNjAwIiBoZWlnaHQ9IjQ0MCIgZmlsbD0idXJsKCNncmlkYmVmb3JlKSIvPgogIDxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDMwMCwyMjApIj4KPGcgc3Ryb2tlPSIjMkIyQTI2IiBzdHJva2Utd2lkdGg9IjMiIGZpbGw9Im5vbmUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLWRhc2hhcnJheT0iNiA4IiBvcGFjaXR5PSIwLjc1Ij4KICA8cmVjdCB4PSItMTMwIiB5PSItMTAwIiB3aWR0aD0iMjYwIiBoZWlnaHQ9IjIwMCIvPgogIDxsaW5lIHgxPSItMTMwIiB5MT0iLTIwIiB4Mj0iMTMwIiB5Mj0iLTIwIi8+CiAgPGxpbmUgeDE9IjAiIHkxPSItMTAwIiB4Mj0iMCIgeTI9IjEwMCIvPgo8L2c+Cjx0ZXh0IHg9IjAiIHk9IjE0MCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9Ikdlb3JnaWEsIHNlcmlmIiBmb250LXN0eWxlPSJpdGFsaWMiIGZvbnQtc2l6ZT0iMjAiIGZpbGw9IiMyQjJBMjYiIG9wYWNpdHk9IjAuNTUiPmJlZm9yZTwvdGV4dD48L2c+Cjwvc3ZnPg==" alt="Illustration — before" />
+        <img class="ba-after" id="baAfter" src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAwIiBoZWlnaHQ9IjQ0MCIgdmlld0JveD0iMCAwIDYwMCA0NDAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImdhZnRlciIgeDE9IjAiIHkxPSIwIiB4Mj0iMSIgeTI9IjEiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAiIHN0b3AtY29sb3I9IiNGMkU3QzkiLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjRTdEMEEwIi8+CiAgICA8L2xpbmVhckdyYWRpZW50PgogICAgPHBhdHRlcm4gaWQ9ImdyaWRhZnRlciIgd2lkdGg9IjI4IiBoZWlnaHQ9IjI4IiBwYXR0ZXJuVW5pdHM9InVzZXJTcGFjZU9uVXNlIj4KICAgICAgPHBhdGggZD0iTTI4IDBIMFYyOCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjQjg4NjBCIiBzdHJva2Utb3BhY2l0eT0iMC4wOSIgc3Ryb2tlLXdpZHRoPSIxIi8+CiAgICA8L3BhdHRlcm4+CiAgPC9kZWZzPgogIDxyZWN0IHdpZHRoPSI2MDAiIGhlaWdodD0iNDQwIiBmaWxsPSJ1cmwoI2dhZnRlcikiLz4KICA8cmVjdCB3aWR0aD0iNjAwIiBoZWlnaHQ9IjQ0MCIgZmlsbD0idXJsKCNncmlkYWZ0ZXIpIi8+CiAgPGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMzAwLDIyMCkiPgo8ZyBzdHJva2U9IiMyQjJBMjYiIHN0cm9rZS13aWR0aD0iNC41IiBmaWxsPSJub25lIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiPgogIDxyZWN0IHg9Ii0xMzAiIHk9Ii0xMDAiIHdpZHRoPSIyNjAiIGhlaWdodD0iMjAwIiByeD0iMyIvPgogIDxsaW5lIHgxPSItMTMwIiB5MT0iLTIwIiB4Mj0iMTMwIiB5Mj0iLTIwIi8+CiAgPGxpbmUgeDE9IjAiIHkxPSItMTAwIiB4Mj0iMCIgeTI9IjEwMCIvPgogIDxjaXJjbGUgY3g9IjAiIGN5PSItMjAiIHI9IjgiIGZpbGw9IiNCODg2MEIiIHN0cm9rZT0ibm9uZSIvPgo8L2c+Cjx0ZXh0IHg9IjAiIHk9IjE0MCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9Ikdlb3JnaWEsIHNlcmlmIiBmb250LXN0eWxlPSJpdGFsaWMiIGZvbnQtc2l6ZT0iMjAiIGZpbGw9IiNCODg2MEIiPmFmdGVyPC90ZXh0PjwvZz4KPC9zdmc+" alt="Illustration — after" />
+        <div class="ba-tag left">Before</div>
+        <div class="ba-tag right">After</div>
+        <div class="ba-handle" id="baHandle"></div>
+      </div>
+      <p class="ba-hint">Drag the handle — sample images shown, ready for real project photography</p>
+    </div>
+  </div>
+</section>
+
+<section class="testimonials" id="testimonials">
+  <div class="ambient-glow" style="--gx:50%; --gy:85%;"></div>
+  </div>
+
+  <div class="wrap">
+    <div class="kicker reveal" style="justify-content:center;">Client Voices</div>
+    <h2 class="h2 reveal" style="text-align:center;">Client Testimonials</h2>
+    <div class="t-mark">"</div>
+    <div class="t-quote" id="tQuote"></div>
+    <div class="t-author" id="tAuthor"></div>
+    <div class="t-dots" id="tDots"></div>
+    <p class="placeholder-note">Placeholder quotes — ready to be swapped for real client feedback.</p>
+  </div>
+</section>
+
+<section class="cta-band">
+  <div class="wrap">
+    <h2>Have a drawing or site measurement?</h2>
+    <p>Share your requirement and let's discuss fabrication, materials, finishing &amp; installation.</p>
+    <a href="#contact" class="btn btn-primary">Start a Conversation</a>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="ambient-glow" style="--gx:10%; --gy:12%;"></div>
+  </div>
+
+  <div class="wrap">
+    <div class="contact-head reveal">
+      <div class="kicker">Get in Touch</div>
+      <h2>Contact Us</h2>
+    </div>
+    <div class="contact-grid">
+      <div class="reveal reveal-delay-1">
+        <form id="contactForm" class="form-grid" action="https://formspree.io/f/mnpnqvla" method="POST">
+          <div class="f-field f-name"><input type="text" name="name" placeholder="Name" required /></div>
+          <div class="f-field f-phone"><input type="tel" name="phone" placeholder="Phone" required /></div>
+          <div class="f-field f-email"><input type="email" name="email" placeholder="Email" required /></div>
+          <div class="f-field f-address"><input type="text" name="address" placeholder="Address" /></div>
+          <div class="f-field f-subject"><input type="text" name="subject" placeholder="Subject" /></div>
+          <div class="f-field f-message"><textarea name="message" placeholder="Message" required></textarea></div>
+          <div class="f-field f-send"><button type="submit" class="send-btn">Send</button></div>
+        </form>
+        <div class="form-status" id="formStatus"></div>
+      </div>
+      <div class="reveal reveal-delay-2">
+        <div class="side-info">
+          <div class="info-row"><div class="k">Address</div><div class="v">D-306, Sector 10, Noida, Uttar Pradesh</div></div>
+          <div class="info-row"><div class="k">Phone</div><div class="v">+91-7599060004</div></div>
+          <div class="info-row"><div class="k">Email</div><div class="v">junaidzakir688@gmail.com</div></div>
+          <div class="social-block">
+            <a href="https://instagram.com/[your_handle]" target="_blank" rel="noopener" aria-label="Instagram">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1"/></svg>
+            </a>
+            <a href="https://wa.me/91XXXXXXXXXX" target="_blank" rel="noopener" aria-label="WhatsApp">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.5 8.5 0 0 1-12.4 7.5L3 20l1.1-5.4A8.5 8.5 0 1 1 21 11.5Z"/><path d="M8.5 10.5c.3 2.4 2.6 4.7 5 5"/></svg>
+            </a>
+            <a href="https://maps.app.goo.gl/xQDTDJUUvZqHJbVi8" target="_blank" rel="noopener" aria-label="Google Maps">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s7-7.2 7-12a7 7 0 1 0-14 0c0 4.8 7 12 7 12Z"/><circle cx="12" cy="9" r="2.4"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap foot-inner">
+    <p>© <span id="year"></span> ZS Enterprises — Architectural &amp; Interior Fabrication Solutions.</p>
+    <p class="foot-tag">"Crafting Fabrication with Royal Precision"</p>
+  </div>
+</footer>
+
+<script>
+/* ---------- hero magnetic dot-grid (cursor warp) ---------- */
+(function () {
+  const canvas = document.getElementById('heroGridCanvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  const heroEl = document.getElementById('home');
+  let W = 0, H = 0, DPR = 1;
+  let cols = 0, rows = 0, spacing = 40;
+  let points = []; // {hx,hy,x,y}
+  let goldColor = '184,134,11', lineColor = '184,134,11';
+  let mouseX = -9999, mouseY = -9999;
+  let targetMouseX = -9999, targetMouseY = -9999;
+  let lastRealMove = 0;
+
+  function readColors() {
+    const cs = getComputedStyle(document.documentElement);
+    const gold = cs.getPropertyValue('--gold').trim();
+    goldColor = hexToRgb(gold) || '184,134,11';
+  }
+  function hexToRgb(hex) {
+    hex = hex.replace('#', '');
+    if (hex.length !== 6) return null;
+    const r = parseInt(hex.slice(0,2),16), g = parseInt(hex.slice(2,4),16), b = parseInt(hex.slice(4,6),16);
+    return `${r},${g},${b}`;
+  }
+
+  function buildGrid() {
+    cols = Math.ceil(W / spacing) + 2;
+    rows = Math.ceil(H / spacing) + 2;
+    points = [];
+    for (let r = 0; r < rows; r++) {
+      for (let c = 0; c < cols; c++) {
+        const hx = c * spacing, hy = r * spacing;
+        points.push({ hx, hy, x: hx, y: hy, c, r });
+      }
+    }
+  }
+
+  function resize() {
+    DPR = Math.min(window.devicePixelRatio || 1, 2);
+    W = heroEl.offsetWidth; H = heroEl.offsetHeight;
+    canvas.width = W * DPR; canvas.height = H * DPR;
+    canvas.style.width = W + 'px'; canvas.style.height = H + 'px';
+    ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
+    buildGrid();
+  }
+  window.addEventListener('resize', resize);
+
+  heroEl.addEventListener('mousemove', (e) => {
+    const rect = canvas.getBoundingClientRect();
+    targetMouseX = e.clientX - rect.left; targetMouseY = e.clientY - rect.top;
+    lastRealMove = performance.now();
+  });
+  heroEl.addEventListener('mouseleave', () => { lastRealMove = 0; });
+  heroEl.addEventListener('touchmove', (e) => {
+    const t = e.touches[0]; if (!t) return;
+    const rect = canvas.getBoundingClientRect();
+    targetMouseX = t.clientX - rect.left; targetMouseY = t.clientY - rect.top;
+    lastRealMove = performance.now();
+  }, { passive: true });
+
+  const RADIUS = 190, MAX_PULL = 0.42;
+
+  function frame(ts) {
+    if (ts - lastRealMove > 2200) {
+      targetMouseX = W * 0.5 + Math.cos(ts * 0.0003) * W * 0.32;
+      targetMouseY = H * 0.5 + Math.sin(ts * 0.00042) * H * 0.28;
+    }
+    mouseX += (targetMouseX - mouseX) * 0.09;
+    mouseY += (targetMouseY - mouseY) * 0.09;
+
+    ctx.clearRect(0, 0, W, H);
+
+    for (const p of points) {
+      const dx = mouseX - p.hx, dy = mouseY - p.hy;
+      const dist = Math.hypot(dx, dy);
+      let tx = p.hx, ty = p.hy, strength = 0;
+      if (dist < RADIUS) {
+        strength = 1 - dist / RADIUS;
+        strength = strength * strength;
+        tx = p.hx + dx * strength * MAX_PULL;
+        ty = p.hy + dy * strength * MAX_PULL;
+      }
+      p.x += (tx - p.x) * 0.16;
+      p.y += (ty - p.y) * 0.16;
+      p._s = strength;
+    }
+
+    const idx = (r, c) => r * cols + c;
+    ctx.lineWidth = 1;
+    for (let r = 0; r < rows; r++) {
+      for (let c = 0; c < cols; c++) {
+        const p = points[idx(r, c)];
+        if (c < cols - 1) {
+          const q = points[idx(r, c + 1)];
+          const s = Math.max(p._s, q._s);
+          ctx.strokeStyle = `rgba(${goldColor}, ${0.05 + s * 0.55})`;
+          ctx.beginPath(); ctx.moveTo(p.x, p.y); ctx.lineTo(q.x, q.y); ctx.stroke();
+        }
+        if (r < rows - 1) {
+          const q = points[idx(r + 1, c)];
+          const s = Math.max(p._s, q._s);
+          ctx.strokeStyle = `rgba(${goldColor}, ${0.05 + s * 0.55})`;
+          ctx.beginPath(); ctx.moveTo(p.x, p.y); ctx.lineTo(q.x, q.y); ctx.stroke();
+        }
+      }
+    }
+    for (const p of points) {
+      const rad = 1.1 + p._s * 2.6;
+      ctx.beginPath();
+      ctx.fillStyle = `rgba(${goldColor}, ${0.16 + p._s * 0.8})`;
+      if (p._s > 0.35) {
+        ctx.shadowColor = `rgba(${goldColor}, 0.8)`;
+        ctx.shadowBlur = 8 * p._s;
+      } else {
+        ctx.shadowBlur = 0;
+      }
+      ctx.arc(p.x, p.y, rad, 0, Math.PI * 2);
+      ctx.fill();
+    }
+    ctx.shadowBlur = 0;
+
+    requestAnimationFrame(frame);
+  }
+
+  readColors();
+  resize();
+  document.getElementById('themeToggle').addEventListener('click', () => setTimeout(readColors, 60));
+  requestAnimationFrame(frame);
+})();
+
+/* ---------- left-edge house that builds as you scroll ---------- */
+(function () {
+  const ids = ['hp-roof', 'hp-chim', 'hp-walls', 'hp-win1', 'hp-win2', 'hp-door', 'hp-ground'];
+  const housePaths = ids.map(id => document.getElementById(id)).filter(Boolean);
+  if (!housePaths.length) return;
+  function update() {
+    const h = document.documentElement;
+    const max = h.scrollHeight - h.clientHeight;
+    const frac = max > 0 ? Math.max(0, Math.min(1, h.scrollTop / max)) : 0;
+    const n = housePaths.length;
+    housePaths.forEach((path, i) => {
+      const segStart = i / n, segEnd = (i + 0.9) / n;
+      let seg = (frac - segStart) / (segEnd - segStart);
+      seg = Math.max(0, Math.min(1, seg));
+      path.style.strokeDashoffset = (1 - seg).toString();
+    });
+  }
+  window.addEventListener('scroll', update, { passive: true });
+  update();
+})();
+
+document.getElementById('year').textContent = new Date().getFullYear();
+
+/* ---------- theme toggle ---------- */
+const sunIcon = '<circle cx="12" cy="12" r="4.5"/><path d="M12 3v2M12 19v2M4.2 4.2l1.4 1.4M18.4 18.4l1.4 1.4M3 12h2M19 12h2M4.2 19.8l1.4-1.4M18.4 5.6l1.4-1.4"/>';
+const moonIcon = '<path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a7 7 0 0 0 10.5 10.5Z"/>';
+const themeIcon = document.getElementById('themeIcon');
+const root = document.documentElement;
+function applyTheme(theme) {
+  root.setAttribute('data-theme', theme);
+  themeIcon.innerHTML = theme === 'dark' ? moonIcon : sunIcon;
+}
+let savedTheme = 'light';
+try { savedTheme = localStorage.getItem('zs-theme') || 'light'; } catch(e) {}
+applyTheme(savedTheme);
+document.getElementById('themeToggle').addEventListener('click', () => {
+  const next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+  applyTheme(next);
+  try { localStorage.setItem('zs-theme', next); } catch(e) {}
+});
+
+/* scroll progress + header state */
+const progress = document.getElementById('progress');
+const header = document.getElementById('siteHeader');
+window.addEventListener('scroll', () => {
+  const h = document.documentElement;
+  const pct = (h.scrollTop) / (h.scrollHeight - h.clientHeight) * 100;
+  progress.style.width = pct + '%';
+  header.classList.toggle('scrolled', h.scrollTop > 40);
+}, { passive:true });
+
+/* mobile menu */
+const burger = document.getElementById('burger');
+const mobileMenu = document.getElementById('mobileMenu');
+burger.addEventListener('click', () => { mobileMenu.classList.toggle('open'); });
+mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => mobileMenu.classList.remove('open')));
+
+/* reveal on scroll */
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); });
+}, { threshold:0.18 });
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+/* counters */
+const counters = document.querySelectorAll('.stat .num');
+const cio = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      const el = e.target; const target = parseInt(el.dataset.count, 10);
+      let cur = 0; const step = Math.max(1, Math.ceil(target / 30));
+      const t = setInterval(() => { cur += step; if (cur >= target) { cur = target; clearInterval(t); } el.textContent = cur; }, 40);
+      cio.unobserve(el);
+    }
+  });
+}, { threshold:0.6 });
+counters.forEach(c => cio.observe(c));
+
+/* timeline progress */
+const tlProgress = document.getElementById('tlProgress');
+const tlSteps = document.querySelectorAll('.tl-step');
+const tio = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) { tlProgress.style.width = '100%'; tlSteps.forEach((s,i) => setTimeout(() => s.classList.add('in'), i*220)); tio.disconnect(); } });
+}, { threshold:0.35 });
+tio.observe(document.getElementById('timeline'));
+
+/* donut chart draw-in */
+const donutWrap = document.getElementById('donutWrap');
+const dio = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      document.querySelectorAll('.donut-seg').forEach(seg => {
+        const pct = parseFloat(seg.dataset.pct);
+        const circumference = 2 * Math.PI * 50;
+        const len = (pct/100) * circumference;
+        seg.style.strokeDasharray = len + ' ' + circumference;
+      });
+      dio.disconnect();
+    }
+  });
+}, { threshold:0.4 });
+dio.observe(donutWrap);
+
+/* material tabs — hover to preview (click still works for touch), with a gentle auto-advance when idle */
+const tabs = document.querySelectorAll('.mat-tab');
+const matPanels = document.querySelectorAll('.mat-panel');
+const tabOrder = Array.from(tabs).map(t => t.dataset.tab);
+let matIndex = 0;
+let matLastInteraction = 0;
+
+function selectMatTab(key) {
+  tabs.forEach(t => t.classList.toggle('active', t.dataset.tab === key));
+  matPanels.forEach(p => p.classList.toggle('active', p.dataset.panel === key));
+  matIndex = tabOrder.indexOf(key);
+}
+tabs.forEach(tab => {
+  tab.addEventListener('mouseenter', () => { selectMatTab(tab.dataset.tab); matLastInteraction = performance.now(); });
+  tab.addEventListener('click', () => { selectMatTab(tab.dataset.tab); matLastInteraction = performance.now(); });
+  tab.addEventListener('focus', () => { selectMatTab(tab.dataset.tab); matLastInteraction = performance.now(); });
+});
+const matSection = document.getElementById('materials');
+const matio = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (!e.isIntersecting) return;
+    setInterval(() => {
+      if (performance.now() - matLastInteraction > 4200) {
+        matIndex = (matIndex + 1) % tabOrder.length;
+        selectMatTab(tabOrder[matIndex]);
+      }
+    }, 4200);
+    matio.disconnect();
+  });
+}, { threshold: 0.3 });
+if (matSection) matio.observe(matSection);
+
+/* before/after slider */
+const baSlider = document.getElementById('baSlider');
+const baAfter = document.getElementById('baAfter');
+const baHandle = document.getElementById('baHandle');
+let dragging = false;
+function setSlider(x) {
+  const rect = baSlider.getBoundingClientRect();
+  let pct = ((x - rect.left) / rect.width) * 100;
+  pct = Math.max(0, Math.min(100, pct));
+  baAfter.style.clipPath = 'inset(0 0 0 ' + pct + '%)';
+  baHandle.style.left = pct + '%';
+}
+baHandle.addEventListener('pointerdown', () => dragging = true);
+window.addEventListener('pointerup', () => dragging = false);
+window.addEventListener('pointermove', (e) => { if (dragging) setSlider(e.clientX); });
+baSlider.addEventListener('click', (e) => setSlider(e.clientX));
+
+/* testimonials carousel */
+const testimonials = [
+  { q: "[Add a testimonial from a completed project — a line or two on the finished work and experience.]", a: "[Client Name] — [Designation / Company]" },
+  { q: "[Add feedback on communication, timelines, or finishing quality from a recent client.]", a: "[Client Name] — [Designation / Company]" },
+  { q: "[Add a quote from an architect, designer or builder you've collaborated with.]", a: "[Client Name] — [Designation / Company]" },
+];
+let tIndex = 0;
+const tQuote = document.getElementById('tQuote');
+const tAuthor = document.getElementById('tAuthor');
+const tDots = document.getElementById('tDots');
+testimonials.forEach((_, i) => {
+  const d = document.createElement('div');
+  d.className = 't-dot' + (i===0 ? ' active' : '');
+  d.addEventListener('click', () => showTestimonial(i));
+  tDots.appendChild(d);
+});
+function showTestimonial(i) {
+  tIndex = i; tQuote.style.opacity = 0;
+  setTimeout(() => { tQuote.textContent = testimonials[i].q; tAuthor.textContent = testimonials[i].a; tQuote.style.opacity = 1; }, 300);
+  document.querySelectorAll('.t-dot').forEach((d, idx) => d.classList.toggle('active', idx===i));
+}
+tQuote.style.transition = 'opacity .3s ease';
+showTestimonial(0);
+setInterval(() => showTestimonial((tIndex+1) % testimonials.length), 5500);
+
+/* contact form (AJAX submit to Formspree) */
+const contactForm = document.getElementById('contactForm');
+const formStatus = document.getElementById('formStatus');
+contactForm.addEventListener('submit', async (e) => {
+  e.preventDefault();
+  formStatus.textContent = 'Sending…';
+  const data = new FormData(contactForm);
+  try {
+    const res = await fetch(contactForm.action, { method: 'POST', body: data, headers: { 'Accept': 'application/json' } });
+    if (res.ok) {
+      formStatus.textContent = 'Thank you — your message has been sent. We\'ll be in touch shortly.';
+      contactForm.reset();
+    } else {
+      formStatus.textContent = 'Form endpoint not yet configured — set up your free Formspree ID above, or email us directly.';
+    }
+  } catch (err) {
+    formStatus.textContent = 'Form endpoint not yet configured — set up your free Formspree ID above, or email us directly.';
+  }
+});
+
+</script>
+</body>
+</html>
