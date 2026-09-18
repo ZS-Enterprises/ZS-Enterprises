@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://zs-enterprises.github.io/ZS-Enterprises/sitemap.xml
